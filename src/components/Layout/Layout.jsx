@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
@@ -17,6 +18,9 @@ const Layout = () => {
         <div className={styles.card}>Картка 7</div>
         <div className={styles.card}>Картка 8</div>
       </div>
+      <main className={styles.layoutContent}>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

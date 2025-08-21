@@ -1,5 +1,7 @@
-import styles from './Layout.module.css';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+
+import styles from './Layout.module.css';
 
 const Layout = () => {
   return (
@@ -15,6 +17,7 @@ const Layout = () => {
         <div className={styles.card}>Картка 7</div>
         <div className={styles.card}>Картка 8</div>
       </div>
+      <Footer />
     </div>
   );
 };

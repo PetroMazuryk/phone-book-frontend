@@ -6,7 +6,10 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<div>Home Page</div>} />
+        <Route
+          index
+          element={<div style={{ textAlign: 'center' }}>Home Page</div>}
+        />
         <Route path="contacts" element={<ContactsPage />} />
       </Route>
     </Routes>

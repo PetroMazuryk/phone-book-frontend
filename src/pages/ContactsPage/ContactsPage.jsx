@@ -8,7 +8,7 @@ const mockContacts = [
 
 function ContactsPage() {
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       <h2>Contacts</h2>
       {mockContacts.map((contact, index) => (
         <ContactCard key={index} name={contact.name} phone={contact.phone} />

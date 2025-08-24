@@ -1,4 +1,6 @@
+import { NavLink } from 'react-router-dom';
 import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
+
 import styles from './Header.module.css';
 
 export const Header = () => {
@@ -7,6 +9,10 @@ export const Header = () => {
 
   return (
     <header className={styles.headerContainer}>
+      <NavLink to="/" className={styles.logoWrap}>
+        <img src="/favicon.png" alt="PhoneBook Logo" className={styles.logo} />
+        <p className={styles.logoText}>Phone Book</p>
+      </NavLink>
       <nav className={styles.nav}>
         <CustomNavLink to="/" end>
           Home

@@ -1,6 +1,12 @@
+import React from 'react';
 import styles from './ContactCard.module.css';
 
-const ContactCard = ({ name, phone }) => {
+type ContactCardProps = {
+  name: string;
+  phone: string;
+};
+
+const ContactCard: React.FC<ContactCardProps> = ({ name, phone }) => {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.cardTitle}>{name}</div>

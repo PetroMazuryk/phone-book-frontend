@@ -1,0 +1,17 @@
+.navLink {
+  color: #333;
+  text-decoration: none;
+  padding: 6px 10px;
+  transition: 0.3s ease;
+}
+
+.navLink:hover {
+  color: #6c3377;
+  font-weight: bold;
+}
+
+.activeLink {
+  color: rgb(237, 97, 73);
+  font-weight: bold;
+  border-bottom: 2px solid tomato;
+}

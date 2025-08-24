@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
 import styles from './Header.module.css';
 
 export const Header = () => {
@@ -8,12 +8,10 @@ export const Header = () => {
   return (
     <header className={styles.headerContainer}>
       <nav className={styles.nav}>
-        <NavLink to="/" className={getLinkClass} end>
+        <CustomNavLink to="/" end>
           Home
-        </NavLink>
-        <NavLink to="/contacts" className={getLinkClass}>
-          Contacts
-        </NavLink>
+        </CustomNavLink>
+        <CustomNavLink to="/contacts">Contacts</CustomNavLink>
       </nav>
     </header>
   );

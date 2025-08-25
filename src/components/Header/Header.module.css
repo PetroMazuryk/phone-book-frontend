@@ -1,7 +1,7 @@
 .headerContainer {
     position: fixed;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     top: 0;
     left: 0;
     width: 100%;

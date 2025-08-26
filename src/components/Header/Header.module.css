@@ -6,7 +6,8 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: #f0f0f0;
+    background-color: #f2ebeb;
+    box-shadow: 4px 9px 11px -3px rgba(0, 0, 0, 0.4);
     padding: 10px 20px;
     text-align: center;
 }
@@ -36,4 +37,10 @@
 
 .logoText {
     color: #333333;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }

@@ -1,5 +1,6 @@
 .footerContainer {
-    background-color: #f0f0f0;
+    color: var(--color-text);
+    background-color: var(--color-bg);
     text-align: center;
     padding: 10px;
     font-size: 14px;

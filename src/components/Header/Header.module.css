@@ -7,7 +7,7 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: #f2ebeb;
+    background-color: var(--color-bg);
     box-shadow: 4px 9px 11px -3px rgba(0, 0, 0, 0.4);
     padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 24px);
     text-align: center;
@@ -22,11 +22,11 @@
 
 .logoWrap::after {
     content: '';
-    width: 84%;
+    width: 85%;
     height: 2px;
     position: absolute;
     bottom: 0;
-    left: 30px;
+    left: 24px;
     z-index: -1;
     background-color: #5392e9;
 }
@@ -37,7 +37,7 @@
 }
 
 .logoText {
-    color: #333333;
+    color: var(--color-text);
     font-size: clamp(16px, 2vw, 20px);
     font-weight: bold;
 }

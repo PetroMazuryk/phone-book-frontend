@@ -1,5 +1,15 @@
 :root {
-    --color-primary: #111111;
-    --color-secondary: #555555;
+    --color-text: #111111;
+    --color-text-secondary: #454545;
+
+    --color-bg: #f2ebeb;
+    --color-bg-main: #f8f9f9;
+    --color-bg-card: #fff;
+
+    --color-btn-hover: #1e40af;
+    --color-btn-active: #2563eb;
+    --color-btn-border: #3b82f6;
+    --color-btn-bg-hover: rgba(30, 64, 175, 0.1);
+
 
 }

@@ -1,5 +1,5 @@
 .navLink {
-  color: #333;
+  color: var(--color-text);
   font-size: clamp(16px, 2vw, 20px);
   text-decoration: none;
   padding: 6px 10px;
@@ -8,15 +8,14 @@
 }
 
 .navLink:hover {
-  color: #1e40af;
+  color: var(--color-btn-hover);
   font-weight: bold;
-  background: rgba(30, 64, 175, 0.1);
-
+  background: var(--color-btn-bg-hover)
 }
 
 .activeLink {
-  color: #2563eb;
+  color: var(--color-btn-active);
   font-weight: bold;
-  border-bottom: 2px solid #3b82f6;
+  border-bottom: 2px solid var(--color-btn-border);
 
 }

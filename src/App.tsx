@@ -8,7 +8,9 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route
           index
-          element={<div style={{ textAlign: 'center' }}>Home Page</div>}
+          element={
+            <div style={{ textAlign: 'center', marginTop: 50 }}>Home Page</div>
+          }
         />
         <Route path="contacts" element={<ContactsPage />} />
       </Route>

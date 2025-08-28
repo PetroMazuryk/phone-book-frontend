@@ -3,6 +3,6 @@
     background-color: var(--color-bg);
     text-align: center;
     padding: 10px;
-    font-size: 14px;
+    font-size: var(--fs-lg);
     margin-top: 20px;
 }

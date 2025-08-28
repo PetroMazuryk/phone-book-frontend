@@ -1,6 +1,6 @@
 .navLink {
   color: var(--color-text);
-  font-size: clamp(16px, 2vw, 20px);
+  font-size: var(--fs-lg);
   text-decoration: none;
   padding: 6px 10px;
   transition: 0.3s ease;
@@ -9,13 +9,13 @@
 
 .navLink:hover {
   color: var(--color-btn-hover);
-  font-weight: bold;
+  font-weight: var(--fw-bold);
   background: var(--color-btn-bg-hover)
 }
 
 .activeLink {
   color: var(--color-btn-active);
-  font-weight: bold;
+  font-weight: var(--fw-bold);
   border-bottom: 2px solid var(--color-btn-border);
 
 }

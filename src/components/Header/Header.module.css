@@ -15,31 +15,31 @@
 
 .logoWrap {
     display: flex;
-    gap: clamp(6px, 1vw, 15px);
+    gap: clamp(2px, 1vw, 10px);
     align-items: center;
     position: relative;
 }
 
 .logoWrap::after {
     content: '';
-    width: 85%;
+    width: 88%;
     height: 2px;
     position: absolute;
     bottom: 0;
-    left: 24px;
+    left: 18px;
     z-index: -1;
     background-color: #5392e9;
 }
 
 .logo {
-    height: clamp(24px, 2vw, 30px);
-    width: clamp(24px, 2vw, 30px);
+    height: clamp(20px, 2vw, 26px);
+    width: clamp(20px, 2vw, 26px);
 }
 
 .logoText {
     color: var(--color-text);
-    font-size: clamp(16px, 2vw, 20px);
-    font-weight: bold;
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
 }
 
 .nav {

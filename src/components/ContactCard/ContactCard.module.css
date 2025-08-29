@@ -1,14 +1,14 @@
 .cardContainer {
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 8px;
-    margin-bottom: 12px;
+    padding: 12px;
     background-color: var(--color-bg-card);
+    display: grid;
+    gap: 4px;
 }
 
 .cardTitle {
     font-weight: bold;
-    margin-bottom: 2px;
 }
 
 .cardInfo {

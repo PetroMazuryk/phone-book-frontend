@@ -1,5 +1,5 @@
 import ContactsList from '../../components/ContactsList/ContactsList';
-
+import CustomText from '../../components/CustomText/CustomText';
 const mockContacts = [
   { id: 1, name: 'Alice', phone: '123-456-7890' },
   { id: 2, name: 'Bob', phone: '987-654-3210' },
@@ -15,7 +15,7 @@ const mockContacts = [
 function ContactsPage() {
   return (
     <div style={{ textAlign: 'center', marginTop: 46 }}>
-      <h2>Contacts</h2>
+      <CustomText>Contacts</CustomText>
       <ContactsList contacts={mockContacts} />
     </div>
   );

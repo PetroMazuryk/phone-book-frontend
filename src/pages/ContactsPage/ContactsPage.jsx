@@ -15,7 +15,7 @@ const mockContacts = [
 function ContactsPage() {
   return (
     <div style={{ textAlign: 'center', marginTop: 46 }}>
-      <CustomText>Contacts</CustomText>
+      <CustomText>Contact List</CustomText>
       <ContactsList contacts={mockContacts} />
     </div>
   );

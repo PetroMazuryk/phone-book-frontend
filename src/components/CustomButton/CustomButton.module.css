@@ -8,20 +8,23 @@
 
 .primary {
     background: var(--color-btn-border);
-    color: white;
+    background: #c4d0e4;
+    color: black;
 }
 
 .primary:hover:not(:disabled) {
-    background: #0056b3;
-}
-
-.secondary {
-    background: #e97f6d;
+    background: #5589c0;
     color: white;
 }
 
+.secondary {
+    background: #cda8a2;
+    color: black;
+}
+
 .secondary:hover:not(:disabled) {
-    background: #cc5945;
+    background: #c57062;
+    color: white;
 }
 
 .danger {

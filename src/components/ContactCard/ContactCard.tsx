@@ -8,10 +8,14 @@ type ContactCardProps = Pick<Contact, 'name' | 'phone'>;
 
 const ContactCard: React.FC<ContactCardProps> = ({ name, phone }) => (
   <div className={styles.cardContainer}>
-    <div className={styles.cardTitle}>{name}</div>
-    <div className={styles.cardInfo}>{phone}</div>
-    <CustomButton variant="primary">Edit</CustomButton>
-    <CustomButton variant="secondary">Delete</CustomButton>
+    <div className={styles.cardInfoWrapper}>
+      <div className={styles.cardTitle}>{name}</div>
+      <div className={styles.cardInfo}>{phone}</div>
+    </div>
+    <div className={styles.cardActions}>
+      <CustomButton variant="primary">Edit</CustomButton>
+      <CustomButton variant="secondary">Delete</CustomButton>
+    </div>
   </div>
 );
 

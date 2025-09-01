@@ -9,6 +9,19 @@
     gap: 8px;
 }
 
+.like {
+    width: 20px;
+    height: 20px;
+    fill: transparent;
+    stroke: var(--color-btn-active);
+
+}
+
+.likeActive {
+    fill: var(--color-btn-border);
+    stroke: var(--color-btn-hover);
+}
+
 .cardInfoWrapper {
     display: flex;
     flex-direction: column;

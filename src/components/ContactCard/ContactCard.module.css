@@ -17,8 +17,14 @@
 
 }
 
+.like:hover {
+    transform: scale(1.1);
+
+}
+
 .likeActive {
     fill: var(--color-btn-border);
+    fill: #cda8a2;
     stroke: var(--color-btn-hover);
 }
 
@@ -41,4 +47,25 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    stroke: rgb(83, 6, 6);
+    transition: stroke 0.3s, fill 0.3s;
+}
+
+.checked {
+    fill: var(--color-btn-border);
+    fill: #cda8a2;
+    stroke: var(--color-btn-hover);
+
+}
+
+.checkbox:hover {
+    transform: scale(1.1);
+
 }

@@ -13,21 +13,25 @@ const ContactCard: React.FC<ContactCardProps> = ({ name, phone }) => {
 
   return (
     <div className={styles.cardContainer}>
-      <button onClick={() => setLiked((prev) => !prev)} type="button">
-        <svg className={`${styles.like} ${liked ? styles.likeActive : ''}`}>
-          <use href={`${icon}#icon-heart`} />
-        </svg>
-      </button>
+      <div className={styles.iconsWrapper}>
+        <button onClick={() => setLiked((prev) => !prev)} type="button">
+          <svg className={`${styles.like} ${liked ? styles.likeActive : ''}`}>
+            <use href={`${icon}#icon-heart`} />
+          </svg>
+        </button>
 
-      <button
-        onClick={() => setChecked((prev) => !prev)}
-        type="button"
-        aria-label="Toggle checkbox"
-      >
-        <svg className={`${styles.checkbox} ${checked ? styles.checked : ''}`}>
-          <use href={`${icon}#icon-checkbox`} />
-        </svg>
-      </button>
+        <button
+          onClick={() => setChecked((prev) => !prev)}
+          type="button"
+          aria-label="Toggle checkbox"
+        >
+          <svg
+            className={`${styles.checkbox} ${checked ? styles.checked : ''}`}
+          >
+            <use href={`${icon}#icon-checkbox`} />
+          </svg>
+        </button>
+      </div>
 
       <div className={styles.cardInfoWrapper}>
         <div className={styles.cardTitle}>{name}</div>

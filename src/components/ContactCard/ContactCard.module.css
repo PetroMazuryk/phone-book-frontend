@@ -12,12 +12,12 @@
 .iconsWrapper {
     display: flex;
     flex-direction: column;
-    /* gap: 6px; */
+    gap: 4pxs
 }
 
 .like {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     fill: transparent;
     stroke: var(--color-btn-active);
 
@@ -29,7 +29,6 @@
 }
 
 .likeActive {
-    fill: var(--color-btn-border);
     fill: #cda8a2;
     stroke: var(--color-btn-hover);
 }
@@ -58,14 +57,14 @@
 
 
 .checkbox {
-    width: 20px;
-    height: 20px;
-    stroke: rgb(83, 6, 6);
+    width: 18px;
+    height: 18px;
+    fill: transparent;
+    stroke: var(--color-btn-active);
     transition: stroke 0.3s, fill 0.3s;
 }
 
 .checked {
-    fill: var(--color-btn-border);
     fill: #cda8a2;
     stroke: var(--color-btn-hover);
 

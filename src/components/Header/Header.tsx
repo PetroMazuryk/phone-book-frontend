@@ -3,6 +3,7 @@ import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
 import logo from '../../assets/logo.png';
 
 import styles from './Header.module.css';
+import { ContactCounter } from '../ContactCounter/ContactCounter';
 
 export const Header = () => {
   return (

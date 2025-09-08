@@ -3,6 +3,7 @@ import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
 import logo from '../../assets/logo.png';
 
 import styles from './Header.module.css';
+import { AuthNav } from '../AuthNav/AuthNav';
 
 export const Header = () => {
   return (
@@ -18,6 +19,7 @@ export const Header = () => {
         </CustomNavLink>
         <CustomNavLink to="/contacts">Contacts</CustomNavLink>
       </nav>
+      <AuthNav />
     </header>
   );
 };

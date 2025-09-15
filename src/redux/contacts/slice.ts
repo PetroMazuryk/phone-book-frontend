@@ -1,11 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-export interface Contact {
-  id: string;
-  name: string;
-  phone: string;
-}
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { fetchContacts } from './operations';
+import { Contact } from '../../types';
 
 interface ContactsState {
   items: Contact[];
@@ -18,22 +13,6 @@ const initialState: ContactsState = {
   loading: false,
   error: null,
 };
-
-export const fetchContacts = createAsyncThunk<
-  Contact[],
-  void,
-  { rejectValue: string }
->('contacts/fetchAll', async (_, thunkAPI) => {
-  try {
-    const response = await axios.get<Contact[]>('api//contacts');
-    return response.data;
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-    return thunkAPI.rejectWithValue('Unknown error');
-  }
-});
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -48,8 +27,8 @@ const contactsSlice = createSlice({
       .addCase(
         fetchContacts.fulfilled,
         (state, action: PayloadAction<Contact[]>) => {
-          state.loading = false;
           state.items = action.payload;
+          state.loading = false;
         }
       )
       .addCase(fetchContacts.rejected, (state, action) => {

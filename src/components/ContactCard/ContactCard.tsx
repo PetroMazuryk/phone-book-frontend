@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
+import { useAppDispatch } from '../../hooks';
+import { deleteContact } from '../../redux/contacts/operations';
 import { Contact } from '../../types';
 import CustomButton from '../CustomButton/CustomButton';
 
 import icon from '../../assets/sprite.svg';
 import styles from './ContactCard.module.css';
 
-type ContactCardProps = Pick<Contact, 'name' | 'phone'>;
+type ContactCardProps = Pick<Contact, 'id' | 'name' | 'phone'>;
 
-const ContactCard: React.FC<ContactCardProps> = ({ name, phone }) => {
+const ContactCard: React.FC<ContactCardProps> = ({ id, name, phone }) => {
+  const dispatch = useAppDispatch();
   const [liked, setLiked] = useState(false);
   const [checked, setChecked] = useState(false);
+
+  const handleDelete = () => {
+    dispatch(deleteContact(id));
+  };
 
   return (
     <div className={styles.cardContainer}>
@@ -40,7 +47,9 @@ const ContactCard: React.FC<ContactCardProps> = ({ name, phone }) => {
 
       <div className={styles.cardActions}>
         <CustomButton variant="primary">Edit</CustomButton>
-        <CustomButton variant="secondary">Delete</CustomButton>
+        <CustomButton variant="secondary" onClick={handleDelete}>
+          Delete
+        </CustomButton>
       </div>
     </div>
   );

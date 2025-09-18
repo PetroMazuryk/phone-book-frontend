@@ -28,6 +28,7 @@ const ContactsList: React.FC = () => {
       {contacts.map((contact) => (
         <ContactCard
           key={contact.id}
+          id={contact.id}
           name={contact.name}
           phone={contact.phone}
         />

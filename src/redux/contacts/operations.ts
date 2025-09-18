@@ -19,3 +19,19 @@ export const fetchContacts = createAsyncThunk<
     return thunkAPI.rejectWithValue('Unknown error');
   }
 });
+
+export const deleteContact = createAsyncThunk<
+  string,
+  string,
+  { rejectValue: string }
+>('contacts/delete', async (contactId, thunkAPI) => {
+  try {
+    await axios.delete(`/contacts/${contactId}`);
+    return contactId;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+    return thunkAPI.rejectWithValue('Unknown error');
+  }
+});

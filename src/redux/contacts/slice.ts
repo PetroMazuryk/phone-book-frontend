@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchContacts } from './operations';
+import { fetchContacts, deleteContact } from './operations';
 import { Contact } from '../../types';
 
 interface ContactsState {
@@ -34,6 +34,23 @@ const contactsSlice = createSlice({
       .addCase(fetchContacts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload ?? 'Failed to fetch contacts';
+      })
+      .addCase(deleteContact.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(
+        deleteContact.fulfilled,
+        (state, action: PayloadAction<string>) => {
+          state.items = state.items.filter(
+            (contact) => contact.id !== action.payload
+          );
+          state.loading = false;
+        }
+      )
+      .addCase(deleteContact.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload ?? 'Failed to delete contact';
       });
   },
 });

@@ -1,3 +1,5 @@
+import CustomButton from '../CustomButton/CustomButton';
+
 import styles from './Modal.module.css';
 
 type ModalProps = {
@@ -13,7 +15,10 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         {children}
-        <button onClick={onClose}>Закрити</button>
+
+        <CustomButton onClick={onClose} variant="primary">
+          Cansel
+        </CustomButton>
       </div>
     </div>
   );

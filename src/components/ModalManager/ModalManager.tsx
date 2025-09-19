@@ -19,7 +19,10 @@ export const ModalManager = () => {
         <Modal isOpen onClose={handleClose}>
           <h2>Edit contact ?</h2>
           <p>id: {modalProps?.id}</p>
-          <button onClick={() => console.log('edit', modalProps?.id)}>
+          <button
+            style={{ marginRight: 20 }}
+            onClick={() => console.log('edit', modalProps?.id)}
+          >
             OK
           </button>
         </Modal>

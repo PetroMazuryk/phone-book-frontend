@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Contact } from '../../types';
 import { useAppDispatch } from '../../hooks';
 import { deleteContact } from '../../redux/contacts/operations';
-import { Contact } from '../../types';
 import CustomButton from '../CustomButton/CustomButton';
+import { ModalManager } from '../../components/ModalManager/ModalManager';
+import { openModal } from '../../redux/modal/modalSlice';
 
 import icon from '../../assets/sprite.svg';
 import styles from './ContactCard.module.css';
@@ -46,10 +48,18 @@ const ContactCard: React.FC<ContactCardProps> = ({ id, name, phone }) => {
       </div>
 
       <div className={styles.cardActions}>
-        <CustomButton variant="primary">Edit</CustomButton>
+        <CustomButton
+          onClick={() =>
+            dispatch(openModal({ type: 'edit', props: { id: 123 } }))
+          }
+          variant="primary"
+        >
+          Edit
+        </CustomButton>
         <CustomButton variant="secondary" onClick={handleDelete}>
           Delete
         </CustomButton>
+        <ModalManager />
       </div>
     </div>
   );

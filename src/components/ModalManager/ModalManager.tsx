@@ -22,12 +22,12 @@ export const ModalManager = () => {
         <Modal isOpen onClose={handleClose}>
           <h2>Edit contact ?</h2>
           <p>id: {modalProps?.id}</p>
-          <button
-            style={{ marginRight: 20 }}
+          <CustomButton
             onClick={() => console.log('edit', modalProps?.id)}
+            variant="success"
           >
             OK
-          </button>
+          </CustomButton>
         </Modal>
       )}
 
@@ -41,7 +41,7 @@ export const ModalManager = () => {
               dispatch(deleteContact(modalProps.id));
               handleClose();
             }}
-            variant="secondary"
+            variant="success"
           >
             Ok
           </CustomButton>

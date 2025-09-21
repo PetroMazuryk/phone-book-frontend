@@ -14,7 +14,7 @@
 
 .primary:hover:not(:disabled) {
     background: #5589c0;
-    color: white;
+    color: #fff;
 }
 
 .secondary {
@@ -24,7 +24,17 @@
 
 .secondary:hover:not(:disabled) {
     background: #c57062;
-    color: white;
+    color: #fff;
+}
+
+.success {
+    background-color: #97e5a9;
+    color: black;
+}
+
+.success:hover:not(:disabled) {
+    background-color: #66b079;
+    color: #fff;
 }
 
 .danger {

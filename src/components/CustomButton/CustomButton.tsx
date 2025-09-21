@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CustomButton.module.css';
 
-type ButtonVariant = 'primary' | 'secondary' | 'danger';
+type ButtonVariant = 'primary' | 'secondary' | 'success' | 'danger';
 
 type CustomButtonProps = {
   children: React.ReactNode;

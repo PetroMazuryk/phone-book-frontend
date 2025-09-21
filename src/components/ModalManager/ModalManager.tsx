@@ -6,6 +6,8 @@ import { deleteContact } from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
 import CustomButton from '../CustomButton/CustomButton';
 
+import styles from './Modalaneger.module.css';
+
 export const ModalManager = () => {
   const dispatch = useAppDispatch();
   const { openModal, modalProps } = useSelector(
@@ -52,12 +54,14 @@ export const ModalManager = () => {
             </CustomButton>
           }
         >
-          <h2>Delete contact</h2>
-          <h3>Are you sure you want to delete the contact?</h3>
-          <p>
+          <h2 className={styles.modalTitle}>Delete contact</h2>
+          <h3 className={styles.modalSubtitle}>
+            Are you sure you want to delete the contact?
+          </h3>
+          <p className={styles.modalText}>
             <strong>Name:</strong> {modalProps?.name}
           </p>
-          <p>
+          <p className={styles.modalText}>
             <strong>Phone:</strong> {modalProps?.phone}
           </p>
         </Modal>

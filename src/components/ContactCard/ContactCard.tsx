@@ -16,10 +16,6 @@ const ContactCard: React.FC<ContactCardProps> = ({ id, name, phone }) => {
   const [liked, setLiked] = useState(false);
   const [checked, setChecked] = useState(false);
 
-  const handleDelete = () => {
-    dispatch(deleteContact(id));
-  };
-
   return (
     <div className={styles.cardContainer}>
       <div className={styles.iconsWrapper}>
@@ -56,13 +52,13 @@ const ContactCard: React.FC<ContactCardProps> = ({ id, name, phone }) => {
         >
           Edit
         </CustomButton>
-        {/* <CustomButton variant="secondary" onClick={handleDelete}>
-          Delete
-        </CustomButton> */}
+
         <CustomButton
           variant="secondary"
           onClick={() =>
-            dispatch(openModal({ type: 'confirmDelete', props: { id } }))
+            dispatch(
+              openModal({ type: 'confirmDelete', props: { id, name, phone } })
+            )
           }
         >
           Delete

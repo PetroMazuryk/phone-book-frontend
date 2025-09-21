@@ -54,7 +54,12 @@ export const ModalManager = () => {
         >
           <h2>Delete contact</h2>
           <h3>Are you sure you want to delete the contact?</h3>
-          <p>id: {modalProps?.id}</p>
+          <p>
+            <strong>Name:</strong> {modalProps?.name}
+          </p>
+          <p>
+            <strong>Phone:</strong> {modalProps?.phone}
+          </p>
         </Modal>
       )}
     </>

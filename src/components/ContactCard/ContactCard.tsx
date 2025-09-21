@@ -56,7 +56,15 @@ const ContactCard: React.FC<ContactCardProps> = ({ id, name, phone }) => {
         >
           Edit
         </CustomButton>
-        <CustomButton variant="secondary" onClick={handleDelete}>
+        {/* <CustomButton variant="secondary" onClick={handleDelete}>
+          Delete
+        </CustomButton> */}
+        <CustomButton
+          variant="secondary"
+          onClick={() =>
+            dispatch(openModal({ type: 'confirmDelete', props: { id } }))
+          }
+        >
           Delete
         </CustomButton>
         <ModalManager />

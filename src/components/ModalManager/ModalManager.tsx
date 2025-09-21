@@ -1,10 +1,13 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { useAppDispatch } from '../../hooks';
 import { closeModal } from '../../redux/modal/modalSlice';
+import { deleteContact } from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
+import CustomButton from '../CustomButton/CustomButton';
 
 export const ModalManager = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { openModal, modalProps } = useSelector(
     (state: RootState) => state.modal
   );
@@ -25,6 +28,23 @@ export const ModalManager = () => {
           >
             OK
           </button>
+        </Modal>
+      )}
+
+      {openModal === 'confirmDelete' && (
+        <Modal isOpen onClose={handleClose}>
+          <h2>Delete contact</h2>
+          <h3>Are you sure you want to delete the contact?</h3>
+          <p>id: {modalProps?.id}</p>
+          <CustomButton
+            onClick={() => {
+              dispatch(deleteContact(modalProps.id));
+              handleClose();
+            }}
+            variant="secondary"
+          >
+            Ok
+          </CustomButton>
         </Modal>
       )}
     </>

@@ -19,32 +19,42 @@ export const ModalManager = () => {
   return (
     <>
       {openModal === 'edit' && (
-        <Modal isOpen onClose={handleClose}>
+        <Modal
+          isOpen
+          onClose={handleClose}
+          actions={
+            <CustomButton
+              onClick={() => console.log('edit', modalProps?.id)}
+              variant="success"
+            >
+              OK
+            </CustomButton>
+          }
+        >
           <h2>Edit contact ?</h2>
           <p>id: {modalProps?.id}</p>
-          <CustomButton
-            onClick={() => console.log('edit', modalProps?.id)}
-            variant="success"
-          >
-            OK
-          </CustomButton>
         </Modal>
       )}
 
       {openModal === 'confirmDelete' && (
-        <Modal isOpen onClose={handleClose}>
+        <Modal
+          isOpen
+          onClose={handleClose}
+          actions={
+            <CustomButton
+              onClick={() => {
+                dispatch(deleteContact(modalProps.id));
+                handleClose();
+              }}
+              variant="success"
+            >
+              OK
+            </CustomButton>
+          }
+        >
           <h2>Delete contact</h2>
           <h3>Are you sure you want to delete the contact?</h3>
           <p>id: {modalProps?.id}</p>
-          <CustomButton
-            onClick={() => {
-              dispatch(deleteContact(modalProps.id));
-              handleClose();
-            }}
-            variant="success"
-          >
-            Ok
-          </CustomButton>
         </Modal>
       )}
     </>

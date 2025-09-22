@@ -35,3 +35,19 @@ export const deleteContact = createAsyncThunk<
     return thunkAPI.rejectWithValue('Unknown error');
   }
 });
+
+export const editContact = createAsyncThunk<
+  Contact,
+  { id: string; data: Partial<Contact> },
+  { rejectValue: string }
+>('contacts/edit', async ({ id, data }, thunkAPI) => {
+  try {
+    const response = await axios.put(`/contacts/${id}`, data);
+    return response.data;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+    return thunkAPI.rejectWithValue('Unknown error');
+  }
+});

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchContacts, deleteContact } from './operations';
+import { fetchContacts, deleteContact, editContact } from './operations';
 import { Contact } from '../../types';
 
 interface ContactsState {
@@ -51,6 +51,26 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload ?? 'Failed to delete contact';
+      })
+      .addCase(editContact.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(
+        editContact.fulfilled,
+        (state, action: PayloadAction<Contact>) => {
+          const index = state.items.findIndex(
+            (contact) => contact.id === action.payload.id
+          );
+          if (index !== -1) {
+            state.items[index] = action.payload;
+          }
+          state.loading = false;
+        }
+      )
+      .addCase(editContact.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload ?? 'Failed to edit contact';
       });
   },
 });

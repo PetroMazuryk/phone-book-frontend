@@ -42,12 +42,10 @@ export const editContact = createAsyncThunk<
   { rejectValue: string }
 >('contacts/edit', async ({ id, data }, thunkAPI) => {
   try {
-    const response = await axios.put(`/contacts/${id}`, data);
+    const response = await axios.patch(`/contacts/${id}`, data);
     return response.data;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
     return thunkAPI.rejectWithValue('Unknown error');
   }
 });

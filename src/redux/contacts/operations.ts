@@ -49,3 +49,17 @@ export const editContact = createAsyncThunk<
     return thunkAPI.rejectWithValue('Unknown error');
   }
 });
+
+export const fetchContactById = createAsyncThunk<
+  Contact,
+  string,
+  { rejectValue: string }
+>('contacts/fetchById', async (id, thunkAPI) => {
+  try {
+    const response = await axios.get<Contact>(`/contacts/${id}`);
+    return response.data;
+  } catch (error: unknown) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue('Unknown error');
+  }
+});

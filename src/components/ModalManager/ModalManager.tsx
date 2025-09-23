@@ -4,6 +4,7 @@ import { useAppDispatch } from '../../hooks';
 import { closeModal } from '../../redux/modal/modalSlice';
 import { deleteContact } from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
+import { EditContactModal } from '../EditContactModal/EditContactModal';
 import CustomButton from '../CustomButton/CustomButton';
 
 import styles from './Modalaneger.module.css';
@@ -20,7 +21,7 @@ export const ModalManager = () => {
 
   return (
     <>
-      {openModal === 'edit' && (
+      {/* {openModal === 'edit' && (
         <Modal
           isOpen
           onClose={handleClose}
@@ -36,8 +37,10 @@ export const ModalManager = () => {
           <h2>Edit contact ?</h2>
           <p>id: {modalProps?.id}</p>
         </Modal>
+      )} */}
+      {openModal === 'edit' && (
+        <EditContactModal modalProps={modalProps} handleClose={handleClose} />
       )}
-
       {openModal === 'confirmDelete' && (
         <Modal
           isOpen

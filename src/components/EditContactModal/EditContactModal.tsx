@@ -6,6 +6,8 @@ import { editContact } from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
 import CustomButton from '../CustomButton/CustomButton';
 
+import styles from './EditContactModal.module.css';
+
 type EditContactModalProps = {
   contactId: string;
   handleClose: () => void;
@@ -17,7 +19,7 @@ export const EditContactModal: React.FC<EditContactModalProps> = ({
 }) => {
   const dispatch = useAppDispatch();
   const contact = useSelector((state: RootState) =>
-    state.contacts.items.find((contact) => contact.id === contactId)
+    state.contacts.items.find((c) => c.id === contactId)
   );
 
   const [editedName, setEditedName] = useState(contact?.name || '');
@@ -47,26 +49,24 @@ export const EditContactModal: React.FC<EditContactModalProps> = ({
         </>
       }
     >
-      <h2>Edit Contact</h2>
-      <div className="formGroup">
-        <label>
-          Name:
+      <div className={styles.modalContainer}>
+        <h2>Edit Contact</h2>
+        <div className={styles.formGroup}>
+          <label>Name:</label>
           <input
             type="text"
             value={editedName}
             onChange={(e) => setEditedName(e.target.value)}
           />
-        </label>
-      </div>
-      <div className="formGroup">
-        <label>
-          Phone:
+        </div>
+        <div className={styles.formGroup}>
+          <label>Phone:</label>
           <input
             type="text"
             value={editedPhone}
             onChange={(e) => setEditedPhone(e.target.value)}
           />
-        </label>
+        </div>
       </div>
     </Modal>
   );

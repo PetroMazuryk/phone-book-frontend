@@ -1,24 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {
-  fetchContacts,
-  deleteContact,
-  editContact,
-  fetchContactById,
-} from './operations';
+import { fetchContacts, deleteContact, editContact } from './operations';
 import { Contact } from '../../types';
 
 interface ContactsState {
   items: Contact[];
   loading: boolean;
   error: string | null;
-  currentContact?: Contact | null;
 }
 
 const initialState: ContactsState = {
   items: [],
   loading: false,
   error: null,
-  currentContact: null,
 };
 
 const contactsSlice = createSlice({
@@ -78,22 +71,6 @@ const contactsSlice = createSlice({
       .addCase(editContact.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload ?? 'Failed to edit contact';
-      })
-      .addCase(fetchContactById.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.currentContact = null;
-      })
-      .addCase(
-        fetchContactById.fulfilled,
-        (state, action: PayloadAction<Contact>) => {
-          state.currentContact = action.payload;
-          state.loading = false;
-        }
-      )
-      .addCase(fetchContactById.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload ?? 'Failed to fetch contact';
       });
   },
 });

@@ -21,26 +21,10 @@ export const ModalManager = () => {
 
   return (
     <>
-      {/* {openModal === 'edit' && (
-        <Modal
-          isOpen
-          onClose={handleClose}
-          actions={
-            <CustomButton
-              onClick={() => console.log('edit', modalProps?.id)}
-              variant="success"
-            >
-              OK
-            </CustomButton>
-          }
-        >
-          <h2>Edit contact ?</h2>
-          <p>id: {modalProps?.id}</p>
-        </Modal>
-      )} */}
-      {openModal === 'edit' && (
-        <EditContactModal modalProps={modalProps} handleClose={handleClose} />
+      {openModal === 'edit' && modalProps?.id && (
+        <EditContactModal contactId={modalProps.id} handleClose={handleClose} />
       )}
+
       {openModal === 'confirmDelete' && (
         <Modal
           isOpen

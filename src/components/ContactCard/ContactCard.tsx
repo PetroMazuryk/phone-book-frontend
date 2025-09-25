@@ -45,9 +45,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ id, name, phone }) => {
 
       <div className={styles.cardActions}>
         <CustomButton
-          onClick={() =>
-            dispatch(openModal({ type: 'edit', props: { id: 123 } }))
-          }
+          onClick={() => dispatch(openModal({ type: 'edit', props: { id } }))}
           variant="primary"
         >
           Edit

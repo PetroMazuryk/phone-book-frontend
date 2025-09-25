@@ -1,49 +1,40 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../hooks';
 import { editContact } from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
 import CustomButton from '../CustomButton/CustomButton';
 
 type EditContactModalProps = {
-  modalProps: {
-    id: string;
-    name: string;
-    phone: string;
-  } | null;
+  contactId: string;
   handleClose: () => void;
 };
 
 export const EditContactModal: React.FC<EditContactModalProps> = ({
-  modalProps,
+  contactId,
   handleClose,
 }) => {
   const dispatch = useAppDispatch();
+  const contact = useSelector((state: RootState) =>
+    state.contacts.items.find((contact) => contact.id === contactId)
+  );
 
-  const [editedName, setEditedName] = useState('');
-  const [editedPhone, setEditedPhone] = useState('');
+  const [editedName, setEditedName] = useState(contact?.name || '');
+  const [editedPhone, setEditedPhone] = useState(contact?.phone || '');
 
-  useEffect(() => {
-    if (modalProps) {
-      setEditedName(modalProps.name || '');
-      setEditedPhone(modalProps.phone || '');
-    }
-  }, [modalProps]);
+  if (!contact) return null;
 
   const handleEditSubmit = () => {
-    if (!modalProps?.id) return;
-
     dispatch(
       editContact({
-        id: modalProps.id,
-        data: {
-          name: editedName,
-          phone: editedPhone,
-        },
+        id: contact.id,
+        data: { name: editedName, phone: editedPhone },
       })
     );
-
     handleClose();
   };
+
   return (
     <Modal
       isOpen
@@ -56,7 +47,7 @@ export const EditContactModal: React.FC<EditContactModalProps> = ({
         </>
       }
     >
-      <h2>Edit contact</h2>
+      <h2>Edit Contact</h2>
       <div className="formGroup">
         <label>
           Name:

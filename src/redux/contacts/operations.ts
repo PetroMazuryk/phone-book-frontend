@@ -4,6 +4,24 @@ import { Contact } from '../../types';
 
 axios.defaults.baseURL = 'http://localhost:3000/api';
 
+export type NewContact = Omit<Contact, 'id'>;
+
+export const addContact = createAsyncThunk<
+  Contact,
+  NewContact,
+  { rejectValue: string }
+>('contacts/addContact', async (newContact, thunkAPI) => {
+  try {
+    const response = await axios.post<Contact>('/contacts', newContact);
+    return response.data;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+    return thunkAPI.rejectWithValue('Unknown error');
+  }
+});
+
 export const fetchContacts = createAsyncThunk<
   Contact[],
   void,

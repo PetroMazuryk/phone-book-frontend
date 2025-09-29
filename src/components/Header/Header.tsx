@@ -20,8 +20,9 @@ export const Header = () => {
       <CustomButton
         onClick={() => dispatch(openModal({ type: 'add' }))}
         variant="primary"
+        style={{ width: 'auto', whiteSpace: 'nowrap' }}
       >
-        Add
+        Add Contact
       </CustomButton>
 
       <nav className={styles.nav}>

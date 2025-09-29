@@ -4,6 +4,8 @@ import { addContact } from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
 import CustomButton from '../CustomButton/CustomButton';
 
+import styles from '../EditContactModal/EditContactModal.module.css';
+
 type AddContactModalProps = {
   handleClose: () => void;
 };

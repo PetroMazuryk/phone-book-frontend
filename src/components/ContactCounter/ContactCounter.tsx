@@ -1,16 +1,11 @@
+import { Contact } from '../../types';
 import css from './ContactCounter.module.css';
-
-type Contact = {
-  id: string;
-  title?: string;
-  favorite: boolean;
-};
 
 type ContactCounterProps = {
   contacts: Contact[];
 };
 
-const ContactCounter = ({ contacts = [] }: ContactCounterProps) => {
+const ContactCounter = ({ contacts }: ContactCounterProps) => {
   const count = contacts.reduce(
     (acc, contact) => {
       if (contact.favorite) {

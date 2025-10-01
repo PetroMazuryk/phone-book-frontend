@@ -3,12 +3,16 @@ import { useAppDispatch } from '../../hooks';
 import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
 import { openModal } from '../../redux/modal/modalSlice';
 import CustomButton from '../CustomButton/CustomButton';
-import logo from '../../assets/logo.png';
-
-import styles from './Header.module.css';
+import { selectContacts } from '../../redux/contacts/selectors';
+import { useAppSelector } from '../../hooks';
 import { AuthNav } from '../AuthNav/AuthNav';
+import ContactCounter from '../ContactCounter/ContactCounter';
+
+import logo from '../../assets/logo.png';
+import styles from './Header.module.css';
 
 export const Header = () => {
+  const contactsArray = useAppSelector(selectContacts);
   const dispatch = useAppDispatch();
   return (
     <header className={styles.headerContainer}>
@@ -24,7 +28,7 @@ export const Header = () => {
       >
         Add Contact
       </CustomButton>
-
+      <ContactCounter contacts={contactsArray} />
       <nav className={styles.nav}>
         <CustomNavLink to="/" end>
           Home

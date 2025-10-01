@@ -1,9 +1,8 @@
-import React from 'react';
-import css from './TaskCounter.module.css';
+import css from './ContactCounter.module.css';
 
 type Contact = {
   id: string;
-  title: string;
+  title?: string;
   favorite: boolean;
 };
 
@@ -11,7 +10,7 @@ type ContactCounterProps = {
   contacts: Contact[];
 };
 
-export const ContactCounter: React.FC<ContactCounterProps> = ({ contacts }) => {
+const ContactCounter = ({ contacts = [] }: ContactCounterProps) => {
   const count = contacts.reduce(
     (acc, contact) => {
       if (contact.favorite) {
@@ -31,3 +30,5 @@ export const ContactCounter: React.FC<ContactCounterProps> = ({ contacts }) => {
     </div>
   );
 };
+
+export default ContactCounter;

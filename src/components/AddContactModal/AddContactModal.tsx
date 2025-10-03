@@ -67,7 +67,7 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
               checked={favorite}
               onChange={(e) => setFavorite(e.target.checked)}
             />
-            Favorite
+            <span style={{ marginLeft: '6px' }}>Favorite</span>
           </label>
         </div>
       </div>

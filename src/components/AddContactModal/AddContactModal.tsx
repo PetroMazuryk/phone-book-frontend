@@ -17,6 +17,7 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
 
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [favorite, setFavorite] = useState(false);
 
   const handleAddSubmit = () => {
     if (!name.trim() || !phone.trim()) return;
@@ -25,6 +26,7 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
       addContact({
         name,
         phone,
+        favorite,
       })
     );
     handleClose();
@@ -35,11 +37,9 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
       isOpen
       onClose={handleClose}
       actions={
-        <>
-          <CustomButton onClick={handleAddSubmit} variant="success">
-            Add
-          </CustomButton>
-        </>
+        <CustomButton onClick={handleAddSubmit} variant="success">
+          Add
+        </CustomButton>
       }
     >
       <div className={styles.modalContainer}>
@@ -59,6 +59,16 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
+        </div>
+        <div className={styles.formGroup}>
+          <label>
+            <input
+              type="checkbox"
+              checked={favorite}
+              onChange={(e) => setFavorite(e.target.checked)}
+            />
+            Favorite
+          </label>
         </div>
       </div>
     </Modal>

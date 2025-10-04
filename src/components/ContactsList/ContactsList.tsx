@@ -31,6 +31,7 @@ const ContactsList: React.FC = () => {
           id={contact.id}
           name={contact.name}
           phone={contact.phone}
+          favorite={contact.favorite}
         />
       ))}
     </div>

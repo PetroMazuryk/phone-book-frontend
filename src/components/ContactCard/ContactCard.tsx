@@ -9,18 +9,25 @@ import { openModal } from '../../redux/modal/modalSlice';
 import icon from '../../assets/sprite.svg';
 import styles from './ContactCard.module.css';
 
-type ContactCardProps = Pick<Contact, 'id' | 'name' | 'phone'>;
+type ContactCardProps = Pick<Contact, 'id' | 'name' | 'phone' | 'favorite'>;
 
-const ContactCard: React.FC<ContactCardProps> = ({ id, name, phone }) => {
+const ContactCard: React.FC<ContactCardProps> = ({
+  id,
+  name,
+  phone,
+  favorite,
+}) => {
   const dispatch = useAppDispatch();
-  const [liked, setLiked] = useState(false);
-  const [checked, setChecked] = useState(false);
 
+  const [checked, setChecked] = useState(false);
+  console.log(favorite);
   return (
     <div className={styles.cardContainer}>
       <div className={styles.iconsWrapper}>
-        <button onClick={() => setLiked((prev) => !prev)} type="button">
-          <svg className={`${styles.like} ${liked ? styles.likeActive : ''}`}>
+        <button type="button">
+          <svg
+            className={`${styles.like} ${favorite ? styles.likeActive : ''}`}
+          >
             <use href={`${icon}#icon-heart`} />
           </svg>
         </button>

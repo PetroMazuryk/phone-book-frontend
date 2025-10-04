@@ -11,16 +11,16 @@ const ContactCounter = ({ contacts }: ContactCounterProps) => {
       if (contact.favorite) {
         acc.favorite += 1;
       } else {
-        acc.hot += 1;
+        acc.priority += 1;
       }
       return acc;
     },
-    { hot: 0, favorite: 0 }
+    { priority: 0, favorite: 0 }
   );
 
   return (
     <div>
-      <p className={css.text}>Hot: {count.hot}</p>
+      <p className={css.text}>Priority: {count.priority}</p>
       <p className={css.text}>Favorite: {count.favorite}</p>
     </div>
   );

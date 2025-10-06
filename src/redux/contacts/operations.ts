@@ -81,3 +81,18 @@ export const fetchContactById = createAsyncThunk<
     return thunkAPI.rejectWithValue('Unknown error');
   }
 });
+
+export const toggleFavorite = createAsyncThunk<
+  Contact,
+  { id: string; favorite: boolean },
+  { rejectValue: string }
+>('contacts/toggleFavorite', async ({ id, favorite }, { rejectWithValue }) => {
+  try {
+    const { data } = await axios.patch(`/contacts/${id}/favorite`, {
+      favorite,
+    });
+    return data;
+  } catch (error: any) {
+    return rejectWithValue(error.message);
+  }
+});

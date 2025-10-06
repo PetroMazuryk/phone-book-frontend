@@ -4,6 +4,7 @@ import {
   addContact,
   deleteContact,
   editContact,
+  toggleFavorite,
 } from './operations';
 import { Contact } from '../../types';
 
@@ -91,6 +92,25 @@ const contactsSlice = createSlice({
       .addCase(editContact.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload ?? 'Failed to edit contact';
+      })
+      .addCase(toggleFavorite.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+
+      .addCase(toggleFavorite.fulfilled, (state, action) => {
+        state.loading = false;
+        const index = state.items.findIndex(
+          (contact) => contact.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      })
+
+      .addCase(toggleFavorite.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || 'Failed to toggle favorite';
       });
   },
 });

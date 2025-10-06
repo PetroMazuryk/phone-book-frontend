@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Contact } from '../../types';
 import { useAppDispatch } from '../../hooks';
-import { deleteContact } from '../../redux/contacts/operations';
 import CustomButton from '../CustomButton/CustomButton';
 import { ModalManager } from '../../components/ModalManager/ModalManager';
 import { openModal } from '../../redux/modal/modalSlice';
+import { toggleFavorite } from '../../redux/contacts/operations';
 
 import icon from '../../assets/sprite.svg';
 import styles from './ContactCard.module.css';
@@ -20,11 +20,15 @@ const ContactCard: React.FC<ContactCardProps> = ({
   const dispatch = useAppDispatch();
 
   const [checked, setChecked] = useState(false);
-  console.log(favorite);
+
+  const handleToggleFavorite = () => {
+    dispatch(toggleFavorite({ id, favorite: !favorite }));
+  };
+
   return (
     <div className={styles.cardContainer}>
       <div className={styles.iconsWrapper}>
-        <button type="button">
+        <button onClick={handleToggleFavorite} type="button">
           <svg
             className={`${styles.like} ${favorite ? styles.likeActive : ''}`}
           >

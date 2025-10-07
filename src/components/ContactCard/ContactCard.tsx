@@ -26,8 +26,6 @@ const ContactCard: React.FC<ContactCardProps> = ({
 }) => {
   const dispatch = useAppDispatch();
 
-  const [checked, setChecked] = useState(false);
-
   const handleToggleFavorite = () => {
     dispatch(toggleFavorite({ id, favorite: !favorite }));
   };
@@ -39,7 +37,11 @@ const ContactCard: React.FC<ContactCardProps> = ({
   return (
     <div className={styles.cardContainer}>
       <div className={styles.iconsWrapper}>
-        <button onClick={handleToggleFavorite} type="button">
+        <button
+          onClick={handleToggleFavorite}
+          type="button"
+          aria-label="Toggle favorite"
+        >
           <svg
             className={`${styles.like} ${favorite ? styles.likeActive : ''}`}
           >

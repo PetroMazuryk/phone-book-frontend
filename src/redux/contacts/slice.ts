@@ -5,6 +5,7 @@ import {
   deleteContact,
   editContact,
   toggleFavorite,
+  togglePriority,
 } from './operations';
 import { Contact } from '../../types';
 
@@ -93,11 +94,11 @@ const contactsSlice = createSlice({
         state.loading = false;
         state.error = action.payload ?? 'Failed to edit contact';
       })
+
       .addCase(toggleFavorite.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-
       .addCase(toggleFavorite.fulfilled, (state, action) => {
         state.loading = false;
         const index = state.items.findIndex(
@@ -107,10 +108,27 @@ const contactsSlice = createSlice({
           state.items[index] = action.payload;
         }
       })
-
       .addCase(toggleFavorite.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || 'Failed to toggle favorite';
+      })
+
+      .addCase(togglePriority.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(togglePriority.fulfilled, (state, action) => {
+        state.loading = false;
+        const index = state.items.findIndex(
+          (contact) => contact.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      })
+      .addCase(togglePriority.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || 'Failed to toggle priority';
       });
   },
 });

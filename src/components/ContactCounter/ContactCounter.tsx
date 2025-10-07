@@ -17,6 +17,7 @@ const ContactCounter = ({ contacts }: ContactCounterProps) => {
 
   return (
     <div>
+      <p className={css.text}>Total: {contacts.length}</p>
       <p className={css.text}>Priority: {count.priority}</p>
       <p className={css.text}>Favorite: {count.favorite}</p>
     </div>

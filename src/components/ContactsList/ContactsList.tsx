@@ -32,6 +32,7 @@ const ContactsList: React.FC = () => {
           name={contact.name}
           phone={contact.phone}
           favorite={contact.favorite}
+          priority={contact.priority}
         />
       ))}
     </div>

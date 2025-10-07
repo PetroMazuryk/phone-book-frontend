@@ -4,18 +4,25 @@ import { useAppDispatch } from '../../hooks';
 import CustomButton from '../CustomButton/CustomButton';
 import { ModalManager } from '../../components/ModalManager/ModalManager';
 import { openModal } from '../../redux/modal/modalSlice';
-import { toggleFavorite } from '../../redux/contacts/operations';
+import {
+  toggleFavorite,
+  togglePriority,
+} from '../../redux/contacts/operations';
 
 import icon from '../../assets/sprite.svg';
 import styles from './ContactCard.module.css';
 
-type ContactCardProps = Pick<Contact, 'id' | 'name' | 'phone' | 'favorite'>;
+type ContactCardProps = Pick<
+  Contact,
+  'id' | 'name' | 'phone' | 'favorite' | 'priority'
+>;
 
 const ContactCard: React.FC<ContactCardProps> = ({
   id,
   name,
   phone,
   favorite,
+  priority,
 }) => {
   const dispatch = useAppDispatch();
 
@@ -23,6 +30,10 @@ const ContactCard: React.FC<ContactCardProps> = ({
 
   const handleToggleFavorite = () => {
     dispatch(toggleFavorite({ id, favorite: !favorite }));
+  };
+
+  const handleTogglePriority = () => {
+    dispatch(togglePriority({ id, priority: !priority }));
   };
 
   return (
@@ -37,12 +48,12 @@ const ContactCard: React.FC<ContactCardProps> = ({
         </button>
 
         <button
-          onClick={() => setChecked((prev) => !prev)}
+          onClick={handleTogglePriority}
           type="button"
           aria-label="Toggle checkbox"
         >
           <svg
-            className={`${styles.checkbox} ${checked ? styles.checked : ''}`}
+            className={`${styles.checkbox} ${priority ? styles.checked : ''}`}
           >
             <use href={`${icon}#icon-checkbox`} />
           </svg>

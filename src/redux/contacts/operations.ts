@@ -96,3 +96,18 @@ export const toggleFavorite = createAsyncThunk<
     return rejectWithValue(error.message);
   }
 });
+
+export const togglePriority = createAsyncThunk<
+  Contact,
+  { id: string; priority: boolean },
+  { rejectValue: string }
+>('contacts/togglePriority', async ({ id, priority }, { rejectWithValue }) => {
+  try {
+    const { data } = await axios.patch(`/contacts/${id}/priority`, {
+      priority,
+    });
+    return data;
+  } catch (error: any) {
+    return rejectWithValue(error.message);
+  }
+});

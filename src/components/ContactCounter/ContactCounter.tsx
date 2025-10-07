@@ -8,11 +8,8 @@ type ContactCounterProps = {
 const ContactCounter = ({ contacts }: ContactCounterProps) => {
   const count = contacts.reduce(
     (acc, contact) => {
-      if (contact.favorite) {
-        acc.favorite += 1;
-      } else {
-        acc.priority += 1;
-      }
+      if (contact.favorite) acc.favorite += 1;
+      if (contact.priority) acc.priority += 1;
       return acc;
     },
     { priority: 0, favorite: 0 }

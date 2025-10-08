@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks';
 import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
 import { openModal } from '../../redux/modal/modalSlice';
@@ -12,8 +12,10 @@ import logo from '../../assets/logo.png';
 import styles from './Header.module.css';
 
 export const Header = () => {
+  const { pathname } = useLocation();
   const contactsArray = useAppSelector(selectContacts);
   const dispatch = useAppDispatch();
+
   return (
     <header className={styles.headerContainer}>
       <NavLink to="/" className={styles.logoWrap}>
@@ -21,13 +23,15 @@ export const Header = () => {
         <p className={styles.logoText}>Phone Book</p>
       </NavLink>
 
-      <CustomButton
-        onClick={() => dispatch(openModal({ type: 'add' }))}
-        variant="primary"
-        style={{ width: 'auto', whiteSpace: 'nowrap' }}
-      >
-        Add Contact
-      </CustomButton>
+      {pathname === '/contacts' && (
+        <CustomButton
+          onClick={() => dispatch(openModal({ type: 'add' }))}
+          variant="primary"
+          style={{ width: 'auto', whiteSpace: 'nowrap' }}
+        >
+          Add Contact
+        </CustomButton>
+      )}
       <ContactCounter contacts={contactsArray} />
       <nav className={styles.nav}>
         <CustomNavLink to="/" end>

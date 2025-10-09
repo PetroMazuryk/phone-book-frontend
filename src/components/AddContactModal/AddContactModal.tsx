@@ -18,6 +18,7 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [favorite, setFavorite] = useState(false);
+  const [priority, setPriority] = useState(false);
 
   const handleAddSubmit = () => {
     if (!name.trim() || !phone.trim()) return;
@@ -27,6 +28,7 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
         name,
         phone,
         favorite,
+        priority,
       })
     );
     handleClose();
@@ -44,6 +46,7 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
     >
       <div className={styles.modalContainer}>
         <h2>Add New Contact</h2>
+
         <div className={styles.formGroup}>
           <label>Name:</label>
           <input
@@ -52,6 +55,7 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
             onChange={(e) => setName(e.target.value)}
           />
         </div>
+
         <div className={styles.formGroup}>
           <label>Phone:</label>
           <input
@@ -60,6 +64,7 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
             onChange={(e) => setPhone(e.target.value)}
           />
         </div>
+
         <div className={styles.formGroup}>
           <label>
             <input
@@ -68,6 +73,17 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
               onChange={(e) => setFavorite(e.target.checked)}
             />
             <span style={{ marginLeft: '6px' }}>Favorite</span>
+          </label>
+        </div>
+
+        <div className={styles.formGroup}>
+          <label>
+            <input
+              type="checkbox"
+              checked={priority}
+              onChange={(e) => setPriority(e.target.checked)}
+            />
+            <span style={{ marginLeft: '6px' }}>Priority</span>
           </label>
         </div>
       </div>

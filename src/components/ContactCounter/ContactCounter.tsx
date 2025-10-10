@@ -1,5 +1,5 @@
 import { Contact } from '../../types';
-import css from './ContactCounter.module.css';
+import styles from './ContactCounter.module.css';
 
 type ContactCounterProps = {
   contacts: Contact[];
@@ -16,10 +16,11 @@ const ContactCounter = ({ contacts }: ContactCounterProps) => {
   );
 
   return (
-    <div>
-      <p className={css.text}>Total: {contacts.length}</p>
-      <p className={css.text}>Priority: {count.priority}</p>
-      <p className={css.text}>Favorite: {count.favorite}</p>
+    <div className={styles.wrapper}>
+      <p className={styles.text}>Total: {contacts.length}</p>
+      <p className={styles.text}>Priority: {count.priority}</p>
+      <p className={styles.text}>Favorite: {count.favorite}</p>
+      <hr className={styles.line} />
     </div>
   );
 };

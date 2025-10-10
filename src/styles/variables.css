@@ -1,5 +1,6 @@
 :root {
     --fs-lg: clamp(16px, 2vw, 20px);
+    --fs-sm: clamp(14px, 1vw, 16px);
     --fw-bold: 700;
 
     --color-text: #111111;

@@ -9,10 +9,15 @@ import styles from './ContactsPage.module.css';
 
 function ContactsPage() {
   const contactsArray = useAppSelector(selectContacts);
+
   return (
     <div className={styles.wrapper}>
-      <ContactCounter contacts={contactsArray} />
-      <StatusFilter />
+      <div className={styles.topBar}>
+        <ContactCounter contacts={contactsArray} />
+        <StatusFilter />
+        <hr className={styles.line} />
+      </div>
+
       <CustomText>Contact List</CustomText>
       <ContactsList />
     </div>

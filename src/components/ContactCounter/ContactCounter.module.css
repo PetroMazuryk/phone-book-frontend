@@ -8,13 +8,6 @@
 .text {
     font-size: var(--fs-sm);
     color: var(--color-text-secondary);
-    padding: 0 100px;
 
-}
 
-.line {
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid var(--color-btn-border);
-    margin: 4px 0;
 }

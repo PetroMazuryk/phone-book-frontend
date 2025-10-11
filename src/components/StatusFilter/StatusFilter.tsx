@@ -17,26 +17,28 @@ export const StatusFilter = () => {
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.title}>Filter by status</h2>
-      <CustomButton
-        selected={filter === statusFilters.total}
-        onClick={() => handleFilterChange(statusFilters.total)}
-      >
-        Total
-      </CustomButton>
+      <div className={styles.buttons}>
+        <CustomButton
+          selected={filter === statusFilters.total}
+          onClick={() => handleFilterChange(statusFilters.total)}
+        >
+          Total
+        </CustomButton>
 
-      <CustomButton
-        selected={filter === statusFilters.favorite}
-        onClick={() => handleFilterChange(statusFilters.favorite)}
-      >
-        Favorite
-      </CustomButton>
+        <CustomButton
+          selected={filter === statusFilters.favorite}
+          onClick={() => handleFilterChange(statusFilters.favorite)}
+        >
+          Favorite
+        </CustomButton>
 
-      <CustomButton
-        selected={filter === statusFilters.priority}
-        onClick={() => handleFilterChange(statusFilters.priority)}
-      >
-        Priority
-      </CustomButton>
+        <CustomButton
+          selected={filter === statusFilters.priority}
+          onClick={() => handleFilterChange(statusFilters.priority)}
+        >
+          Priority
+        </CustomButton>
+      </div>
     </div>
   );
 };

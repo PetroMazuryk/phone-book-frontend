@@ -6,7 +6,7 @@
 }
 
 .title {
-    font-size: var(--fs-lg);
+    font-size: var(--fs-sm);
     font-weight: 600;
     margin-bottom: 8px;
 }
@@ -18,8 +18,14 @@
     flex-wrap: wrap;
 }
 
-@media (min-width: 768px) {
+.primary {
+    background-color: #007bff;
+    color: white;
+}
 
+
+
+@media (min-width: 768px) {
 
     .buttons {
         gap: 8px;

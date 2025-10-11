@@ -50,3 +50,9 @@
     background: #ccc;
     cursor: not-allowed;
 }
+
+.selected {
+    background: var(--color-btn-border);
+    color: #fff;
+    border: 1px solid #003f88;
+}

@@ -21,6 +21,7 @@ export const StatusFilter = () => {
         <CustomButton
           selected={filter === statusFilters.total}
           onClick={() => handleFilterChange(statusFilters.total)}
+          style={{ width: 64, whiteSpace: 'nowrap' }}
         >
           Total
         </CustomButton>
@@ -28,6 +29,7 @@ export const StatusFilter = () => {
         <CustomButton
           selected={filter === statusFilters.favorite}
           onClick={() => handleFilterChange(statusFilters.favorite)}
+          style={{ width: 64, whiteSpace: 'nowrap' }}
         >
           Favorite
         </CustomButton>
@@ -35,6 +37,7 @@ export const StatusFilter = () => {
         <CustomButton
           selected={filter === statusFilters.priority}
           onClick={() => handleFilterChange(statusFilters.priority)}
+          style={{ width: 64, whiteSpace: 'nowrap' }}
         >
           Priority
         </CustomButton>

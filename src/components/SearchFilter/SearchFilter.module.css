@@ -5,6 +5,10 @@
     flex-wrap: wrap;
 }
 
+.inputWrapper {
+    position: relative;
+}
+
 .input {
     padding: 2px 12px;
     font-size: var(--fs-sm);
@@ -14,4 +18,18 @@
     &:focus {
         border-color: var(--color-success)
     }
+}
+
+.clearBtn {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 22px;
+    color: var(--color-text-secondary);
+}
+
+.clearBtn:hover {
+    color: tomato;
 }

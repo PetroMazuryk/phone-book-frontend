@@ -24,22 +24,44 @@ export const SearchFilter: React.FC = () => {
     dispatch(setPhoneFilter(e.target.value));
   };
 
+  const clearName = () => dispatch(setNameFilter(''));
+  const clearPhone = () => dispatch(setPhoneFilter(''));
+
   return (
     <div className={styles.wrapper}>
-      <input
-        type="text"
-        placeholder="Search by name"
-        value={name}
-        onChange={handleNameChange}
-        className={styles.input}
-      />
-      <input
-        type="text"
-        placeholder="Search by phone"
-        value={phone}
-        onChange={handlePhoneChange}
-        className={styles.input}
-      />
+      <div className={styles.inputWrapper}>
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={name}
+          onChange={handleNameChange}
+          className={styles.input}
+        />
+        {name && (
+          <button type="button" className={styles.clearBtn} onClick={clearName}>
+            ×
+          </button>
+        )}
+      </div>
+
+      <div className={styles.inputWrapper}>
+        <input
+          type="text"
+          placeholder="Search by phone"
+          value={phone}
+          onChange={handlePhoneChange}
+          className={styles.input}
+        />
+        {phone && (
+          <button
+            type="button"
+            className={styles.clearBtn}
+            onClick={clearPhone}
+          >
+            ×
+          </button>
+        )}
+      </div>
     </div>
   );
 };

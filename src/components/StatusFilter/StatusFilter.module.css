@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        gap: 8px;
+        margin: 16px auto;
+    }
+}

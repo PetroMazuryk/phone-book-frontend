@@ -11,6 +11,7 @@ type CustomButtonProps = {
   disabled?: boolean;
   className?: string;
   style?: React.CSSProperties;
+  selected?: boolean;
 };
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -21,6 +22,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   disabled = false,
   className = '',
   style,
+  selected = false,
 }) => {
   return (
     <button
@@ -28,7 +30,9 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
       style={style}
-      className={`${styles.button} ${styles[variant]} ${className}`}
+      className={`${styles.button} ${styles[variant]}  ${
+        selected ? styles.selected : ''
+      } ${className}`}
     >
       {children}
     </button>

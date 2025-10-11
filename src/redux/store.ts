@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import contactsReducer from './contacts/slice';
+import { filtersReducer } from './filters/filtersSlice';
 import modalReducer from './modal/modalSlice';
 
 import {
@@ -15,6 +16,7 @@ import {
 export const store = configureStore({
   reducer: {
     contacts: contactsReducer,
+    filters: filtersReducer,
     modal: modalReducer,
   },
   middleware: (getDefaultMiddleware) =>

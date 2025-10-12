@@ -42,7 +42,7 @@
     color: white;
 }
 
-.danger:hover:not(:disabled) {
+.danger:hover {
     background: #a71d2a;
 }
 

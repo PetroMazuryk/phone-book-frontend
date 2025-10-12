@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import ContactsPage from './pages/ContactsPage/ContactsPage';
 import Layout from './components/Layout/Layout';
+import ContactsPage from './pages/ContactsPage/ContactsPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           }
         />
         <Route path="contacts" element={<ContactsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

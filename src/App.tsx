@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import ContactsPage from './pages/ContactsPage/ContactsPage';
+import ContactIdPage from './pages/ContactIdPage/ContactIdPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           }
         />
         <Route path="contacts" element={<ContactsPage />} />
+        <Route path="/contacts/:id" element={<ContactIdPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

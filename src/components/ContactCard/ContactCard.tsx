@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Contact } from '../../types';
 import { useAppDispatch } from '../../hooks';
 import CustomButton from '../CustomButton/CustomButton';
@@ -62,10 +63,10 @@ const ContactCard: React.FC<ContactCardProps> = ({
         </button>
       </div>
 
-      <div className={styles.cardInfoWrapper}>
+      <Link to={`/contacts/${id}`} className={styles.cardInfoWrapper}>
         <div className={styles.cardTitle}>{name}</div>
         <div className={styles.cardInfo}>{phone}</div>
-      </div>
+      </Link>
 
       <div className={styles.cardActions}>
         <CustomButton

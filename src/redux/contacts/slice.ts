@@ -6,6 +6,7 @@ import {
   editContact,
   toggleFavorite,
   togglePriority,
+  fetchContactById,
 } from './operations';
 import { Contact } from '../../types';
 
@@ -129,6 +130,28 @@ const contactsSlice = createSlice({
       .addCase(togglePriority.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || 'Failed to toggle priority';
+      })
+      .addCase(fetchContactById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(
+        fetchContactById.fulfilled,
+        (state, action: PayloadAction<Contact>) => {
+          const existing = state.items.find(
+            (item) => item.id === action.payload.id
+          );
+          if (existing) {
+            Object.assign(existing, action.payload);
+          } else {
+            state.items.push(action.payload);
+          }
+          state.loading = false;
+        }
+      )
+      .addCase(fetchContactById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload ?? 'Failed to fetch contact by id';
       });
   },
 });

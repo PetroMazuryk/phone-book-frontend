@@ -1,0 +1,79 @@
+.cardContainer {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: var(--color-bg-card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+
+    margin: 80px auto 0;
+    max-width: 600px;
+    width: 100%;
+
+}
+
+.iconsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.like {
+    width: 18px;
+    height: 18px;
+    fill: transparent;
+    stroke: var(--color-btn-active);
+}
+
+.like:hover {
+    transform: scale(1.1);
+}
+
+.likeActive {
+    fill: #cda8a2;
+    stroke: var(--color-btn-hover);
+}
+
+.cardInfoWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    width: 100%;
+    padding: 0 4px;
+    border-radius: 8px;
+    transition: border 0.2s ease, background-color 0.2s ease;
+}
+
+.cardInfoWrapper:hover {
+    border: 1px solid var(--color-btn-hover);
+    background-color: var(--color-bg-main);
+}
+
+.cardTitle {
+    color: var(--color-text-secondary);
+    font-weight: bold;
+}
+
+.cardInfo {
+    color: var(--color-text-secondary);
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    fill: transparent;
+    stroke: var(--color-btn-active);
+    transition: stroke 0.3s, fill 0.3s;
+}
+
+.checked {
+    fill: #cda8a2;
+    stroke: var(--color-btn-hover);
+}
+
+.checkbox:hover {
+    transform: scale(1.1);
+}

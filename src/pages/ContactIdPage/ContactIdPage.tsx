@@ -74,9 +74,12 @@ const ContactIdPage: React.FC = () => {
         <div className={styles.cardInfo}>{contact.phone}</div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Link to="/contacts" style={{ color: 'var(--color-btn-active)' }}>
-          ← Back
+      <div>
+        <Link to="/contacts" className={styles.backLink}>
+          <svg className={`${styles.arrow} `}>
+            <use href={`${icon}#icon-arrow-left`} />
+          </svg>
+          Back
         </Link>
       </div>
     </div>

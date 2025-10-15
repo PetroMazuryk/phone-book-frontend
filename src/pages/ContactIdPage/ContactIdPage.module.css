@@ -27,15 +27,6 @@
     stroke: var(--color-btn-active);
 }
 
-.like:hover {
-    transform: scale(1.1);
-}
-
-.likeActive {
-    fill: #cda8a2;
-    stroke: var(--color-btn-hover);
-}
-
 .cardInfoWrapper {
     display: flex;
     flex-direction: column;
@@ -47,10 +38,7 @@
     transition: border 0.2s ease, background-color 0.2s ease;
 }
 
-.cardInfoWrapper:hover {
-    border: 1px solid var(--color-btn-hover);
-    background-color: var(--color-bg-main);
-}
+
 
 .cardTitle {
     color: var(--color-text-secondary);
@@ -74,6 +62,34 @@
     stroke: var(--color-btn-hover);
 }
 
-.checkbox:hover {
-    transform: scale(1.1);
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #c4d0e4;
+    color: black;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.backLink:hover {
+    background: #5589c0;
+    color: #fff;
+}
+
+.arrow {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-text-secondary);
+    transition: stroke 0.3s ease, fill 0.3s ease;
+}
+
+.backLink:hover .arrow {
+    fill: #fff;
+
 }

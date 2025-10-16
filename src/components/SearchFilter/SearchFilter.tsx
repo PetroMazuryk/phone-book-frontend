@@ -1,5 +1,7 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
+import CustomButton from '../CustomButton/CustomButton';
+import { resetFilters } from '../../redux/filters/filtersSlice';
 import {
   setNameFilter,
   setPhoneFilter,
@@ -26,6 +28,10 @@ export const SearchFilter: React.FC = () => {
 
   const clearName = () => dispatch(setNameFilter(''));
   const clearPhone = () => dispatch(setPhoneFilter(''));
+
+  const handleReset = () => {
+    dispatch(resetFilters());
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -62,6 +68,13 @@ export const SearchFilter: React.FC = () => {
           </button>
         )}
       </div>
+      <CustomButton
+        variant="secondary"
+        onClick={handleReset}
+        style={{ width: 'auto', whiteSpace: 'nowrap' }}
+      >
+        Reset all
+      </CustomButton>
     </div>
   );
 };

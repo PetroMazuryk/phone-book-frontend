@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Contact } from '../../types';
+import { Contact, ContactWithCalls } from '../../types';
 
 axios.defaults.baseURL = 'http://localhost:3000/api';
 
@@ -68,13 +68,26 @@ export const editContact = createAsyncThunk<
   }
 });
 
+// export const fetchContactById = createAsyncThunk<
+//   Contact,
+//   string,
+//   { rejectValue: string }
+// >('contacts/fetchById', async (id, thunkAPI) => {
+//   try {
+//     const response = await axios.get<Contact>(`/contacts/${id}`);
+//     return response.data;
+//   } catch (error: unknown) {
+//     if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
+//     return thunkAPI.rejectWithValue('Unknown error');
+//   }
+// });
 export const fetchContactById = createAsyncThunk<
-  Contact,
+  ContactWithCalls,
   string,
   { rejectValue: string }
 >('contacts/fetchById', async (id, thunkAPI) => {
   try {
-    const response = await axios.get<Contact>(`/contacts/${id}`);
+    const response = await axios.get<ContactWithCalls>(`/contacts/${id}`);
     return response.data;
   } catch (error: unknown) {
     if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);

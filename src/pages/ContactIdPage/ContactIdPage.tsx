@@ -7,6 +7,8 @@ import {
   selectError,
 } from '../../redux/contacts/selectors';
 import { fetchContactById } from '../../redux/contacts/operations';
+import CallsTable from '../../components/CallsTable/CallsTable';
+
 import icon from '../../assets/sprite.svg';
 import styles from './ContactIdPage.module.css';
 
@@ -50,39 +52,43 @@ const ContactIdPage: React.FC = () => {
   }
 
   return (
-    <div className={styles.cardContainer}>
-      <div className={styles.iconsWrapper}>
-        <svg
-          className={`${styles.like} ${
-            contact.favorite ? styles.likeActive : ''
-          }`}
-        >
-          <use href={`${icon}#icon-heart`} />
-        </svg>
-
-        <svg
-          className={`${styles.checkbox} ${
-            contact.priority ? styles.checked : ''
-          }`}
-        >
-          <use href={`${icon}#icon-checkbox`} />
-        </svg>
-      </div>
-
-      <div className={styles.cardInfoWrapper}>
-        <div className={styles.cardTitle}>{contact.name}</div>
-        <div className={styles.cardInfo}>{contact.phone}</div>
-      </div>
-
-      <div>
-        <Link to="/contacts" className={styles.backLink}>
-          <svg className={`${styles.arrow} `}>
-            <use href={`${icon}#icon-arrow-left`} />
+    <>
+      <div className={styles.cardContainer}>
+        <div className={styles.iconsWrapper}>
+          <svg
+            className={`${styles.like} ${
+              contact.favorite ? styles.likeActive : ''
+            }`}
+          >
+            <use href={`${icon}#icon-heart`} />
           </svg>
-          Back
-        </Link>
+
+          <svg
+            className={`${styles.checkbox} ${
+              contact.priority ? styles.checked : ''
+            }`}
+          >
+            <use href={`${icon}#icon-checkbox`} />
+          </svg>
+        </div>
+
+        <div className={styles.cardInfoWrapper}>
+          <div className={styles.cardTitle}>{contact.name}</div>
+          <div className={styles.cardInfo}>{contact.phone}</div>
+        </div>
+
+        <div>
+          <Link to="/contacts" className={styles.backLink}>
+            <svg className={`${styles.arrow}`}>
+              <use href={`${icon}#icon-arrow-left`} />
+            </svg>
+            Back
+          </Link>
+        </div>
       </div>
-    </div>
+
+      <CallsTable calls={contact.calls || []} />
+    </>
   );
 };
 

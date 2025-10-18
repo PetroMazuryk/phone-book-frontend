@@ -1,6 +1,8 @@
 import React from 'react';
 import { Call } from '../../types';
+import CustomButton from '../CustomButton/CustomButton';
 
+import icon from '../../assets/sprite.svg';
 import styles from './CallsTable.module.css';
 
 type CallsTableProps = {
@@ -22,6 +24,8 @@ const CallsTable: React.FC<CallsTableProps> = ({ calls = [] }) => {
             <th>Time</th>
             <th>Duration</th>
             <th>Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +36,20 @@ const CallsTable: React.FC<CallsTableProps> = ({ calls = [] }) => {
               <td>{call.time}</td>
               <td>{call.duration}</td>
               <td>{call.description}</td>
+              <td>
+                <button className={styles.iconButton}>
+                  <svg className={`${styles.icon}`}>
+                    <use href={`${icon}#icon-pencil`} />
+                  </svg>
+                </button>
+              </td>
+              <td>
+                <button className={styles.iconButton}>
+                  <svg className={`${styles.icon}`}>
+                    <use href={`${icon}#icon-bin2`} />
+                  </svg>
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

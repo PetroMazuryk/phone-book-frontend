@@ -33,9 +33,42 @@ th {
     background-color: #f0f8ff;
 }
 
-th:last-child,
-td:last-child {
+th:nth-child(5),
+td:nth-child(5) {
     width: 100%;
     white-space: normal;
+}
+
+td:nth-child(6),
+td:nth-child(7) {
+    text-align: center;
+}
+
+.iconButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #c4d0e4;
+    color: black;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.iconButton:hover {
+    background: #5589c0;
+}
+
+.icon {
+    width: 10px;
+    height: 10px;
+    fill: var(--color-text-secondary);
+    transition: stroke 0.3s ease, fill 0.3s ease;
+}
+
+.iconButton:hover .icon {
+    fill: #fff;
 
 }

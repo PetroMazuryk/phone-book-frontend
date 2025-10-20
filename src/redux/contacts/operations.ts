@@ -68,19 +68,6 @@ export const editContact = createAsyncThunk<
   }
 });
 
-// export const fetchContactById = createAsyncThunk<
-//   Contact,
-//   string,
-//   { rejectValue: string }
-// >('contacts/fetchById', async (id, thunkAPI) => {
-//   try {
-//     const response = await axios.get<Contact>(`/contacts/${id}`);
-//     return response.data;
-//   } catch (error: unknown) {
-//     if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
-//     return thunkAPI.rejectWithValue('Unknown error');
-//   }
-// });
 export const fetchContactById = createAsyncThunk<
   ContactWithCalls,
   string,
@@ -122,5 +109,19 @@ export const togglePriority = createAsyncThunk<
     return data;
   } catch (error: any) {
     return rejectWithValue(error.message);
+  }
+});
+
+export const deleteCall = createAsyncThunk<
+  { contactId: string; callId: string },
+  { contactId: string; callId: string },
+  { rejectValue: string }
+>('contacts/deleteCall', async ({ contactId, callId }, thunkAPI) => {
+  try {
+    await axios.delete(`/contacts/${contactId}/calls/${callId}`);
+    return { contactId, callId };
+  } catch (error: unknown) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue('Unknown error');
   }
 });

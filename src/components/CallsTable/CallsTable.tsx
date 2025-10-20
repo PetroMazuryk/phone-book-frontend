@@ -46,7 +46,7 @@ const CallsTable: React.FC<CallsTableProps> = ({ calls = [] }) => {
               <td>
                 <button className={styles.iconButton}>
                   <svg className={`${styles.icon}`}>
-                    <use href={`${icon}#icon-bin2`} />
+                    <use href={`${icon}#icon-bin`} />
                   </svg>
                 </button>
               </td>

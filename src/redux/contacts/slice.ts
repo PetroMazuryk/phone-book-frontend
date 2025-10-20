@@ -7,6 +7,7 @@ import {
   toggleFavorite,
   togglePriority,
   fetchContactById,
+  deleteCall,
 } from './operations';
 import { Contact } from '../../types';
 
@@ -152,6 +153,28 @@ const contactsSlice = createSlice({
       .addCase(fetchContactById.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload ?? 'Failed to fetch contact by id';
+      })
+      .addCase(deleteCall.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(
+        deleteCall.fulfilled,
+        (
+          state,
+          action: PayloadAction<{ contactId: string; callId: string }>
+        ) => {
+          state.loading = false;
+          const { contactId, callId } = action.payload;
+          const contact = state.items.find((c) => c.id === contactId);
+          if (contact?.calls) {
+            contact.calls = contact.calls.filter((call) => call.id !== callId);
+          }
+        }
+      )
+      .addCase(deleteCall.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload ?? 'Failed to delete call';
       });
   },
 });

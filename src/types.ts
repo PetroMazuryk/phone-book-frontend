@@ -1,7 +1,7 @@
 export type Call = {
   id: string;
   date: string;
-  incoming: string;
+  direction: string;
   time: string;
   duration: string;
   description: string;

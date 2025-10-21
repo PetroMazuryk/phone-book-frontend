@@ -8,8 +8,9 @@ import {
   togglePriority,
   fetchContactById,
   deleteCall,
+  addCall,
 } from './operations';
-import { Contact } from '../../types';
+import { Contact, Call } from '../../types';
 
 interface ContactsState {
   items: Contact[];
@@ -175,6 +176,29 @@ const contactsSlice = createSlice({
       .addCase(deleteCall.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload ?? 'Failed to delete call';
+      })
+      .addCase(addCall.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(
+        addCall.fulfilled,
+        (
+          state,
+          action: PayloadAction<{ contactId: string; newCall: Call }>
+        ) => {
+          state.loading = false;
+          const { contactId, newCall } = action.payload;
+          const contact = state.items.find((c) => c.id === contactId);
+          if (contact) {
+            if (!contact.calls) contact.calls = [];
+            contact.calls.push(newCall);
+          }
+        }
+      )
+      .addCase(addCall.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload ?? 'Failed to add call';
       });
   },
 });

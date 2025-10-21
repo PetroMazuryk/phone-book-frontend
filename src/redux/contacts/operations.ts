@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Contact, ContactWithCalls } from '../../types';
+import { Contact, ContactWithCalls, Call } from '../../types';
 
 axios.defaults.baseURL = 'http://localhost:3000/api';
 
@@ -120,6 +120,23 @@ export const deleteCall = createAsyncThunk<
   try {
     await axios.delete(`/contacts/${contactId}/calls/${callId}`);
     return { contactId, callId };
+  } catch (error: unknown) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue('Unknown error');
+  }
+});
+
+export const addCall = createAsyncThunk<
+  { contactId: string; newCall: Call },
+  { contactId: string; newCall: Omit<Call, 'id'> },
+  { rejectValue: string }
+>('contacts/addCall', async ({ contactId, newCall }, thunkAPI) => {
+  try {
+    const response = await axios.post<Call>(
+      `/contacts/${contactId}/calls`,
+      newCall
+    );
+    return { contactId, newCall: response.data };
   } catch (error: unknown) {
     if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
     return thunkAPI.rejectWithValue('Unknown error');

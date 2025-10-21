@@ -1,4 +1,4 @@
-import { NavLink, useLocation, useParams } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks';
 import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
 import { openModal } from '../../redux/modal/modalSlice';
@@ -11,6 +11,10 @@ import styles from './Header.module.css';
 export const Header = () => {
   const { pathname } = useLocation();
   const dispatch = useAppDispatch();
+
+  const contactId = pathname.startsWith('/contacts/')
+    ? pathname.split('/').pop()
+    : null;
 
   return (
     <header className={styles.headerContainer}>
@@ -29,15 +33,10 @@ export const Header = () => {
         </CustomButton>
       )}
 
-      {pathname.startsWith('/contacts/') && (
+      {contactId && (
         <CustomButton
           onClick={() =>
-            dispatch(
-              openModal({
-                type: 'addCall',
-                props: { contactId: pathname.split('/').pop() },
-              })
-            )
+            dispatch(openModal({ type: 'addCall', props: { contactId } }))
           }
           variant="primary"
           style={{ width: 'auto', whiteSpace: 'nowrap' }}

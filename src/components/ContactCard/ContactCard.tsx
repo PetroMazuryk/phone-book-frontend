@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Contact } from '../../types';
 import { useAppDispatch } from '../../hooks';
 import CustomButton from '../CustomButton/CustomButton';
-import { ModalManager } from '../../components/ModalManager/ModalManager';
+
 import { openModal } from '../../redux/modal/modalSlice';
 import {
   toggleFavorite,
@@ -86,7 +86,6 @@ const ContactCard: React.FC<ContactCardProps> = ({
         >
           Delete
         </CustomButton>
-        <ModalManager />
       </div>
     </div>
   );

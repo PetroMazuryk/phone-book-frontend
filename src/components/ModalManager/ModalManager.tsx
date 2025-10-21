@@ -6,6 +6,7 @@ import { deleteContact } from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
 import { EditContactModal } from '../EditContactModal/EditContactModal';
 import { AddContactModal } from '../AddContactModal/AddContactModal';
+import { AddCallModal } from '../AddCallModal/AddCallModal';
 import CustomButton from '../CustomButton/CustomButton';
 
 import styles from './Modalaneger.module.css';
@@ -27,6 +28,13 @@ export const ModalManager = () => {
       )}
 
       {openModal === 'add' && <AddContactModal handleClose={handleClose} />}
+
+      {openModal === 'addCall' && modalProps?.contactId && (
+        <AddCallModal
+          contactId={modalProps.contactId}
+          handleClose={handleClose}
+        />
+      )}
 
       {openModal === 'confirmDelete' && (
         <Modal

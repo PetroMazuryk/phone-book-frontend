@@ -80,9 +80,10 @@ export const AddCallModal: React.FC<AddCallModalProps> = ({
         </div>
 
         <div className={styles.formGroup}>
-          <label>Duration (min):</label>
+          <label>Duration:</label>
           <input
-            type="number"
+            type="time"
+            step="1"
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
           />

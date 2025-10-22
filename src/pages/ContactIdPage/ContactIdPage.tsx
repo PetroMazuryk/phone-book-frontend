@@ -1,11 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import {
-  selectContacts,
-  selectLoading,
-  selectError,
-} from '../../redux/contacts/selectors';
+import { selectLoading, selectError } from '../../redux/contacts/selectors';
 import { fetchContactById } from '../../redux/contacts/operations';
 import CallsTable from '../../components/CallsTable/CallsTable';
 
@@ -15,11 +11,12 @@ import styles from './ContactIdPage.module.css';
 const ContactIdPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
-  const contacts = useAppSelector(selectContacts);
   const loading = useAppSelector(selectLoading);
   const error = useAppSelector(selectError);
 
-  const contact = contacts.find((c) => c.id === id);
+  const contact = useAppSelector((state) =>
+    state.contacts.items.find((c) => c.id === id)
+  );
 
   useEffect(() => {
     if (id && !contact) {
@@ -87,7 +84,10 @@ const ContactIdPage: React.FC = () => {
         </div>
       </div>
 
-      <CallsTable calls={contact.calls || []} contactId={contact.id} />
+      <CallsTable
+        calls={(contact.calls || []).filter(Boolean)}
+        contactId={contact.id}
+      />
     </>
   );
 };

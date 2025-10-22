@@ -189,11 +189,15 @@ const contactsSlice = createSlice({
         ) => {
           state.loading = false;
           const { contactId, newCall } = action.payload;
-          const contact = state.items.find((c) => c.id === contactId);
-          if (contact) {
-            if (!contact.calls) contact.calls = [];
-            contact.calls.push(newCall);
-          }
+          state.items = state.items.map((contact) => {
+            if (contact.id === contactId) {
+              const calls = contact.calls
+                ? [...contact.calls, newCall]
+                : [newCall];
+              return { ...contact, calls };
+            }
+            return contact;
+          });
         }
       )
       .addCase(addCall.rejected, (state, action) => {

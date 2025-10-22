@@ -2,7 +2,10 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../hooks';
 import { closeModal } from '../../redux/modal/modalSlice';
-import { deleteContact } from '../../redux/contacts/operations';
+import {
+  deleteContact,
+  fetchContactById,
+} from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
 import { EditContactModal } from '../EditContactModal/EditContactModal';
 import { AddContactModal } from '../AddContactModal/AddContactModal';
@@ -17,6 +20,11 @@ export const ModalManager = () => {
     (state: RootState) => state.modal
   );
 
+  const triggerRefresh = () => {
+    if (modalProps?.contactId) {
+      dispatch(fetchContactById(modalProps.contactId));
+    }
+  };
   if (!openModal) return null;
 
   const handleClose = () => dispatch(closeModal());
@@ -33,6 +41,7 @@ export const ModalManager = () => {
         <AddCallModal
           contactId={modalProps.contactId}
           handleClose={handleClose}
+          triggerRefresh={triggerRefresh}
         />
       )}
 

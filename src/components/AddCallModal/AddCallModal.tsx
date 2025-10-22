@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAppDispatch } from '../../hooks';
+import { addCall, fetchContactById } from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
 import CustomButton from '../CustomButton/CustomButton';
 import styles from '../EditContactModal/EditContactModal.module.css';
@@ -7,11 +8,13 @@ import styles from '../EditContactModal/EditContactModal.module.css';
 type AddCallModalProps = {
   contactId?: string;
   handleClose: () => void;
+  triggerRefresh: () => void;
 };
 
 export const AddCallModal: React.FC<AddCallModalProps> = ({
   contactId,
   handleClose,
+  triggerRefresh,
 }) => {
   const dispatch = useAppDispatch();
 
@@ -21,22 +24,19 @@ export const AddCallModal: React.FC<AddCallModalProps> = ({
   const [duration, setDuration] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleAddSubmit = () => {
-    if (!date || !time || !duration) return;
+  const handleAddSubmit = async () => {
+    if (!contactId || !date || !time || !duration) return;
 
-    const newCall = {
-      contactId,
-      date,
-      direction,
-      time,
-      duration,
-      description,
-    };
+    const newCallData = { date, direction, time, duration, description };
 
-    // dispatch(addCall(newCall));
-    handleClose();
+    try {
+      await dispatch(addCall({ contactId, newCall: newCallData })).unwrap();
+      triggerRefresh();
+      handleClose();
+    } catch (error) {
+      console.error('Failed to add call', error);
+    }
   };
-
   return (
     <Modal
       isOpen

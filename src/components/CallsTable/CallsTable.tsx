@@ -1,6 +1,7 @@
 import React from 'react';
 import { Call } from '../../types';
 import { useAppDispatch } from '../../hooks';
+
 import { deleteCall } from '../../redux/contacts/operations';
 
 import icon from '../../assets/sprite.svg';
@@ -21,7 +22,7 @@ const CallsTable: React.FC<CallsTableProps> = ({ calls, contactId }) => {
   if (calls.length === 0) {
     return <p style={{ textAlign: 'center', marginTop: 20 }}>No calls</p>;
   }
-
+  console.log(calls.map((c) => c.id));
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
@@ -40,7 +41,7 @@ const CallsTable: React.FC<CallsTableProps> = ({ calls, contactId }) => {
           {calls.map((call) => (
             <tr key={call.id}>
               <td>{call.date}</td>
-              <td>{call.incoming}</td>
+              <td>{call.direction}</td>
               <td>{call.time}</td>
               <td>{call.duration}</td>
               <td>{call.description}</td>

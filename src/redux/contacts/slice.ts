@@ -9,6 +9,7 @@ import {
   fetchContactById,
   deleteCall,
   addCall,
+  editCall,
 } from './operations';
 import { Contact, Call } from '../../types';
 
@@ -203,6 +204,27 @@ const contactsSlice = createSlice({
       .addCase(addCall.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload ?? 'Failed to add call';
+      })
+      .addCase(editCall.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(editCall.fulfilled, (state, action) => {
+        state.loading = false;
+        const { contactId, updatedCall } = action.payload;
+        const contact = state.items.find((c) => c.id === contactId);
+        if (contact && contact.calls) {
+          const index = contact.calls.findIndex(
+            (call) => call.id === updatedCall.id
+          );
+          if (index !== -1) {
+            contact.calls[index] = updatedCall;
+          }
+        }
+      })
+      .addCase(editCall.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || 'Failed to edit call';
       });
   },
 });

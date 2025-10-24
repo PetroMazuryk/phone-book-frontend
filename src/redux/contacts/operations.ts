@@ -6,6 +6,11 @@ axios.defaults.baseURL = 'http://localhost:3000/api';
 
 export type NewContact = Omit<Contact, 'id'>;
 
+type EditCallResponse = {
+  result: Call;
+  message: string;
+};
+
 export const addContact = createAsyncThunk<
   Contact,
   NewContact,
@@ -142,3 +147,25 @@ export const addCall = createAsyncThunk<
     return thunkAPI.rejectWithValue('Unknown error');
   }
 });
+
+export const editCall = createAsyncThunk<
+  { contactId: string; updatedCall: Call },
+  { contactId: string; callId: string; updatedFields: Partial<Call> },
+  { rejectValue: string }
+>(
+  'contacts/editCall',
+  async ({ contactId, callId, updatedFields }, thunkAPI) => {
+    try {
+      const response = await axios.put<EditCallResponse>(
+        `/contacts/${contactId}/calls/${callId}`,
+        updatedFields
+      );
+      return { contactId, updatedCall: response.data.result };
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      return thunkAPI.rejectWithValue('Unknown error');
+    }
+  }
+);

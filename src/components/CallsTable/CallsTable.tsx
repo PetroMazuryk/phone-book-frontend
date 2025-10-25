@@ -1,7 +1,7 @@
 import React from 'react';
 import { Call } from '../../types';
 import { useAppDispatch } from '../../hooks';
-
+import { openModal } from '../../redux/modal/modalSlice';
 import { deleteCall } from '../../redux/contacts/operations';
 
 import icon from '../../assets/sprite.svg';
@@ -19,10 +19,19 @@ const CallsTable: React.FC<CallsTableProps> = ({ calls, contactId }) => {
     dispatch(deleteCall({ contactId, callId }));
   };
 
+  const handleEdit = (callId: string) => {
+    dispatch(
+      openModal({
+        type: 'editCall',
+        props: { contactId, callId },
+      })
+    );
+  };
+
   if (calls.length === 0) {
     return <p style={{ textAlign: 'center', marginTop: 20 }}>No calls</p>;
   }
-  console.log(calls.map((c) => c.id));
+
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
@@ -46,7 +55,10 @@ const CallsTable: React.FC<CallsTableProps> = ({ calls, contactId }) => {
               <td>{call.duration}</td>
               <td>{call.description}</td>
               <td>
-                <button className={styles.iconButton}>
+                <button
+                  onClick={() => handleEdit(call.id)}
+                  className={styles.iconButton}
+                >
                   <svg className={`${styles.icon}`}>
                     <use href={`${icon}#icon-pencil`} />
                   </svg>

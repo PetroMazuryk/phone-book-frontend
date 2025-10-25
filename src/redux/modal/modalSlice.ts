@@ -1,6 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type ModalType = 'edit' | 'confirmDelete' | 'add' | 'addCall' | null;
+type ModalType =
+  | 'edit'
+  | 'confirmDelete'
+  | 'add'
+  | 'addCall'
+  | 'editCall'
+  | null;
 
 interface ModalState {
   openModal: ModalType;

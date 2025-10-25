@@ -10,6 +10,7 @@ import { Modal } from '../Modal/Modal';
 import { EditContactModal } from '../EditContactModal/EditContactModal';
 import { AddContactModal } from '../AddContactModal/AddContactModal';
 import { AddCallModal } from '../AddCallModal/AddCallModal';
+import { EditCallModal } from '../EditCallModal/EditCallModal';
 import CustomButton from '../CustomButton/CustomButton';
 
 import styles from './Modalaneger.module.css';
@@ -44,6 +45,17 @@ export const ModalManager = () => {
           triggerRefresh={triggerRefresh}
         />
       )}
+
+      {openModal === 'editCall' &&
+        modalProps?.contactId &&
+        modalProps?.callId && (
+          <EditCallModal
+            contactId={modalProps.contactId}
+            callId={modalProps.callId}
+            handleClose={handleClose}
+            triggerRefresh={triggerRefresh}
+          />
+        )}
 
       {openModal === 'confirmDelete' && (
         <Modal

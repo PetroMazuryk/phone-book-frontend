@@ -1,6 +1,6 @@
 import React from 'react';
 import { Call } from '../../types';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch } from '../../hooks/reduxHooks';
 import { openModal } from '../../redux/modal/modalSlice';
 import { deleteCall } from '../../redux/contacts/operations';
 

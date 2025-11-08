@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { editCall, fetchContactById } from '../../redux/contacts/operations';
 import { selectContacts } from '../../redux/contacts/selectors';
 import { Modal } from '../Modal/Modal';

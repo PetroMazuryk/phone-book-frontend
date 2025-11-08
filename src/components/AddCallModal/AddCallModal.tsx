@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch } from '../../hooks/reduxHooks';
 import { addCall, fetchContactById } from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
 import CustomButton from '../CustomButton/CustomButton';

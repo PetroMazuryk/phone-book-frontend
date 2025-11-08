@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import ContactCard from '../ContactCard/ContactCard';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import {
   selectContacts,
   selectLoading,

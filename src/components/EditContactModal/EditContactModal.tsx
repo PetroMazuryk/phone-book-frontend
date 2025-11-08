@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch } from '../../hooks/reduxHooks';
 import { editContact } from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
 import CustomButton from '../CustomButton/CustomButton';

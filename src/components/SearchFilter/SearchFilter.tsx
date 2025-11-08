@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import CustomButton from '../CustomButton/CustomButton';
 import { resetFilters } from '../../redux/filters/filtersSlice';
 import { statusFilters } from '../../redux/filters/constants';

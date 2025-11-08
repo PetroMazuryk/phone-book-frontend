@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch } from '../../hooks/reduxHooks';
 import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
 import { openModal } from '../../redux/modal/modalSlice';
 import CustomButton from '../CustomButton/CustomButton';

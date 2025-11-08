@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Contact } from '../../types';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch } from '../../hooks/reduxHooks';
 import CustomButton from '../CustomButton/CustomButton';
 
 import { openModal } from '../../redux/modal/modalSlice';

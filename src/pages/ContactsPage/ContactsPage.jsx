@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks/reduxHooks';
 import { selectContacts } from '../../redux/contacts/selectors';
 import ContactCounter from '../../components/ContactCounter/ContactCounter';
 import ContactsList from '../../components/ContactsList/ContactsList';

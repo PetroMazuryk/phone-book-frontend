@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { selectLoading, selectError } from '../../redux/contacts/selectors';
 import { fetchContactById } from '../../redux/contacts/operations';
 import CallsTable from '../../components/CallsTable/CallsTable';

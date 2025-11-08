@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
+import { RestrictedRoute } from './components/RestrictedRoute';
 import ContactsPage from './pages/ContactsPage/ContactsPage';
 import ContactIdPage from './pages/ContactIdPage/ContactIdPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
@@ -11,7 +12,31 @@ function App() {
         <Route
           index
           element={
-            <div style={{ textAlign: 'center', marginTop: 50 }}>Home Page</div>
+            <div style={{ textAlign: 'center', marginTop: 80 }}>Home Page</div>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={
+                <div style={{ textAlign: 'center', marginTop: 80 }}>
+                  Register
+                </div>
+              }
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={
+                <div style={{ textAlign: 'center', marginTop: 80 }}>Login</div>
+              }
+            />
           }
         />
         <Route path="contacts" element={<ContactsPage />} />

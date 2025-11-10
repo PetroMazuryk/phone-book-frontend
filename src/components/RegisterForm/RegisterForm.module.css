@@ -1,0 +1,116 @@
+.registerPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 16px;
+    background: #f7f7f7;
+    min-height: 100vh;
+}
+
+.registerCard {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 420px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    color: #222;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.labelText {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.inputWrapper {
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    padding: 10px 12px;
+    padding-right: 40px;
+    /* місце для іконки ока */
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.2s;
+}
+
+.input:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.eyeBtn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    stroke: #555;
+    fill: transparent;
+    transition: 0.2s;
+}
+
+.icon:hover {
+    stroke: #8b5cf6;
+}
+
+.submitBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 0;
+    background: #8b5cf6;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.submitBtn:hover {
+    background: #7c3aed;
+}
+
+.iconHeart {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.error {
+    color: #ef4444;
+    font-size: 0.9rem;
+    text-align: center;
+}

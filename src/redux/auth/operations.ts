@@ -1,21 +1,47 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3000/api';
+const instance = axios.create({
+  baseURL: import.meta.env.VITE_BASE_URL as string,
+});
 
-export const registerUser = createAsyncThunk(
-  'auth/register',
-  async (
-    credentials: { name: string; email: string; password: string },
-    thunkAPI
-  ) => {
-    try {
-      const { data } = await axios.post('/users/register', credentials);
-      return data;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(
-        error.response?.data?.message || 'Registration error'
-      );
-    }
+export const setToken = (token: string | null): void => {
+  if (token) {
+    instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } else {
+    delete instance.defaults.headers.common['Authorization'];
   }
-);
+};
+
+interface RegisterCredentials {
+  name: string;
+  email: string;
+  password: string;
+}
+
+interface RegisterResponse {
+  user: {
+    name: string;
+    email: string;
+  };
+  token: string;
+}
+
+export const registerUser = createAsyncThunk<
+  RegisterResponse,
+  RegisterCredentials,
+  { rejectValue: string }
+>('auth/register', async (credentials, { rejectWithValue }) => {
+  try {
+    const { data } = await instance.post<RegisterResponse>(
+      '/users/register',
+      credentials
+    );
+
+    setToken(data.token);
+    return data;
+  } catch (error) {
+    const err = error as AxiosError<{ message?: string }>;
+    return rejectWithValue(err.response?.data?.message || 'Registration error');
+  }
+});

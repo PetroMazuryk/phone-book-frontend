@@ -45,3 +45,35 @@ export const registerUser = createAsyncThunk<
     return rejectWithValue(err.response?.data?.message || 'Registration error');
   }
 });
+
+interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+interface LoginResponse {
+  user: {
+    name: string;
+    email: string;
+  };
+  token: string;
+}
+
+export const loginUser = createAsyncThunk<
+  LoginResponse,
+  LoginCredentials,
+  { rejectValue: string }
+>('auth/login', async (credentials, { rejectWithValue }) => {
+  try {
+    const { data } = await instance.post<LoginResponse>(
+      '/users/login',
+      credentials
+    );
+
+    setToken(data.token);
+    return data;
+  } catch (error) {
+    const err = error as AxiosError<{ message?: string }>;
+    return rejectWithValue(err.response?.data?.message || 'Login error');
+  }
+});

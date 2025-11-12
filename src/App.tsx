@@ -4,7 +4,7 @@ import { RestrictedRoute } from './components/RestrictedRoute';
 import ContactsPage from './pages/ContactsPage/ContactsPage';
 import ContactIdPage from './pages/ContactIdPage/ContactIdPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import RegisterPage from './components/RegisterForm/RegisterForm';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 import LoginForm from './components/LoginForm/LoginForm';
 
 function App() {

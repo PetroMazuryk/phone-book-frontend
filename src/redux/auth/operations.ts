@@ -77,3 +77,16 @@ export const loginUser = createAsyncThunk<
     return rejectWithValue(err.response?.data?.message || 'Login error');
   }
 });
+
+export const logoutUser = createAsyncThunk<void, void, { rejectValue: string }>(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await instance.post('/users/logout');
+      setToken(null);
+    } catch (error) {
+      const err = error as AxiosError<{ message?: string }>;
+      return rejectWithValue(err.response?.data?.message || 'Logout error');
+    }
+  }
+);

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { registerUser, loginUser } from './operations';
+import { registerUser, loginUser, logoutUser } from './operations';
 
 interface User {
   name: string | null;
@@ -60,6 +60,20 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload || 'Login error';
         state.isLoggedIn = false;
+      })
+      .addCase(logoutUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.loading = false;
+        state.user = { name: null, email: null };
+        state.token = null;
+        state.isLoggedIn = false;
+      })
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || 'Logout failed';
       });
   },
 });

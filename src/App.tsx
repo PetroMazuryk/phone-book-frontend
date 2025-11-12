@@ -4,7 +4,7 @@ import { RestrictedRoute } from './components/RestrictedRoute';
 import ContactsPage from './pages/ContactsPage/ContactsPage';
 import ContactIdPage from './pages/ContactIdPage/ContactIdPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import RegisterForm from './components/RegisterForm/RegisterForm';
+import RegisterPage from './components/RegisterForm/RegisterForm';
 
 function App() {
   return (
@@ -21,12 +21,7 @@ function App() {
           element={
             <RestrictedRoute
               redirectTo="/contacts"
-              component={
-                // <div style={{ textAlign: 'center', marginTop: 80 }}>
-                //   Register
-                // </div>
-                <RegisterForm />
-              }
+              component={<RegisterPage />}
             />
           }
         />

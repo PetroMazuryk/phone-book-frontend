@@ -5,6 +5,7 @@ import ContactsPage from './pages/ContactsPage/ContactsPage';
 import ContactIdPage from './pages/ContactIdPage/ContactIdPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import RegisterPage from './components/RegisterForm/RegisterForm';
+import LoginForm from './components/LoginForm/LoginForm';
 
 function App() {
   return (
@@ -28,12 +29,7 @@ function App() {
         <Route
           path="/login"
           element={
-            <RestrictedRoute
-              redirectTo="/contacts"
-              component={
-                <div style={{ textAlign: 'center', marginTop: 80 }}>Login</div>
-              }
-            />
+            <RestrictedRoute redirectTo="/contacts" component={<LoginForm />} />
           }
         />
         <Route path="contacts" element={<ContactsPage />} />

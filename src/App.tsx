@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import { RestrictedRoute } from './components/RestrictedRoute';
+import { PrivateRoute } from './components/PrivateRoute';
 import ContactsPage from './pages/ContactsPage/ContactsPage';
 import ContactIdPage from './pages/ContactIdPage/ContactIdPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
@@ -32,7 +33,12 @@ function App() {
             <RestrictedRoute redirectTo="/contacts" component={<LoginForm />} />
           }
         />
-        <Route path="contacts" element={<ContactsPage />} />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
         <Route path="/contacts/:id" element={<ContactIdPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

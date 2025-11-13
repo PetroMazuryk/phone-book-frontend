@@ -1,9 +1,11 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/reduxHooks';
+import { useAuth } from '../../hooks/useAuth';
 import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
 import { openModal } from '../../redux/modal/modalSlice';
 import CustomButton from '../CustomButton/CustomButton';
 import { AuthNav } from '../AuthNav/AuthNav';
+import { UserMenu } from '../UserMenu/UserMenu';
 
 import logo from '../../assets/logo.png';
 import styles from './Header.module.css';
@@ -11,6 +13,7 @@ import styles from './Header.module.css';
 export const Header = () => {
   const { pathname } = useLocation();
   const dispatch = useAppDispatch();
+  const { isLoggedIn } = useAuth();
 
   const contactId = pathname.startsWith('/contacts/')
     ? pathname.split('/').pop()
@@ -51,7 +54,8 @@ export const Header = () => {
         </CustomNavLink>
         <CustomNavLink to="/contacts">Contacts</CustomNavLink>
       </nav>
-      <AuthNav />
+      {/* <AuthNav /> */}
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </header>
   );
 };

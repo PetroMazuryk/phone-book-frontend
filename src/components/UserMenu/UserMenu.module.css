@@ -1,0 +1,52 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background-color: var(--color-bg);
+    padding: 2px 6px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-btn-border);
+}
+
+.username {
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: #333;
+}
+
+.logoutBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #d96c60;
+    color: var(--color-bg-card);
+    border: none;
+    border-radius: 8px;
+    padding: 3px 10px;
+    font-weight: 500;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.logoutBtn:hover {
+    background-color: #d25344;
+    transform: scale(1.05);
+}
+
+.icon {
+    font-size: 18px;
+}

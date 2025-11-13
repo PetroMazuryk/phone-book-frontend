@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Contact, ContactWithCalls, Call } from '../../types';
 
-axios.defaults.baseURL = 'http://localhost:3000/api';
+import { instance } from '../auth/operations';
 
 export type NewContact = Omit<Contact, 'id'>;
 
@@ -17,7 +17,7 @@ export const addContact = createAsyncThunk<
   { rejectValue: string }
 >('contacts/addContact', async (newContact, thunkAPI) => {
   try {
-    const response = await axios.post<Contact>('/contacts', newContact);
+    const response = await instance.post<Contact>('/contacts', newContact);
     return response.data;
   } catch (error: unknown) {
     if (error instanceof Error) {
@@ -33,7 +33,7 @@ export const fetchContacts = createAsyncThunk<
   { rejectValue: string }
 >('contacts/fetchAll', async (_, thunkAPI) => {
   try {
-    const response = await axios.get<Contact[]>('/contacts');
+    const response = await instance.get<Contact[]>('/contacts');
     return response.data;
   } catch (error: unknown) {
     if (error instanceof Error) {
@@ -49,7 +49,7 @@ export const deleteContact = createAsyncThunk<
   { rejectValue: string }
 >('contacts/delete', async (contactId, thunkAPI) => {
   try {
-    await axios.delete(`/contacts/${contactId}`);
+    await instance.delete(`/contacts/${contactId}`);
     return contactId;
   } catch (error: unknown) {
     if (error instanceof Error) {
@@ -65,7 +65,7 @@ export const editContact = createAsyncThunk<
   { rejectValue: string }
 >('contacts/edit', async ({ id, data }, thunkAPI) => {
   try {
-    const response = await axios.put(`/contacts/${id}`, data);
+    const response = await instance.put(`/contacts/${id}`, data);
     return response.data;
   } catch (error: unknown) {
     if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
@@ -79,7 +79,7 @@ export const fetchContactById = createAsyncThunk<
   { rejectValue: string }
 >('contacts/fetchById', async (id, thunkAPI) => {
   try {
-    const response = await axios.get<ContactWithCalls>(`/contacts/${id}`);
+    const response = await instance.get<ContactWithCalls>(`/contacts/${id}`);
     return response.data;
   } catch (error: unknown) {
     if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
@@ -93,7 +93,7 @@ export const toggleFavorite = createAsyncThunk<
   { rejectValue: string }
 >('contacts/toggleFavorite', async ({ id, favorite }, { rejectWithValue }) => {
   try {
-    const { data } = await axios.patch(`/contacts/${id}/favorite`, {
+    const { data } = await instance.patch(`/contacts/${id}/favorite`, {
       favorite,
     });
     return data;
@@ -108,7 +108,7 @@ export const togglePriority = createAsyncThunk<
   { rejectValue: string }
 >('contacts/togglePriority', async ({ id, priority }, { rejectWithValue }) => {
   try {
-    const { data } = await axios.patch(`/contacts/${id}/priority`, {
+    const { data } = await instance.patch(`/contacts/${id}/priority`, {
       priority,
     });
     return data;
@@ -123,7 +123,7 @@ export const deleteCall = createAsyncThunk<
   { rejectValue: string }
 >('contacts/deleteCall', async ({ contactId, callId }, thunkAPI) => {
   try {
-    await axios.delete(`/contacts/${contactId}/calls/${callId}`);
+    await instance.delete(`/contacts/${contactId}/calls/${callId}`);
     return { contactId, callId };
   } catch (error: unknown) {
     if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
@@ -137,7 +137,7 @@ export const addCall = createAsyncThunk<
   { rejectValue: string }
 >('contacts/addCall', async ({ contactId, newCall }, thunkAPI) => {
   try {
-    const response = await axios.post<Call>(
+    const response = await instance.post<Call>(
       `/contacts/${contactId}/calls`,
       newCall
     );
@@ -156,7 +156,7 @@ export const editCall = createAsyncThunk<
   'contacts/editCall',
   async ({ contactId, callId, updatedFields }, thunkAPI) => {
     try {
-      const response = await axios.put<EditCallResponse>(
+      const response = await instance.put<EditCallResponse>(
         `/contacts/${contactId}/calls/${callId}`,
         updatedFields
       );

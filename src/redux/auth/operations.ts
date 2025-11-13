@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL as string,
 });
 

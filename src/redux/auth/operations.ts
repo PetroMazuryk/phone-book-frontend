@@ -90,3 +90,30 @@ export const logoutUser = createAsyncThunk<void, void, { rejectValue: string }>(
     }
   }
 );
+
+interface RefreshResponse {
+  name: string;
+  email: string;
+}
+
+export const refreshUser = createAsyncThunk<
+  RefreshResponse,
+  void,
+  { rejectValue: string; state: { auth: { token: string | null } } }
+>('auth/refresh', async (_, { getState, rejectWithValue }) => {
+  const state = getState();
+  const persistedToken = state.auth.token;
+
+  if (!persistedToken) {
+    return rejectWithValue('No token found');
+  }
+
+  try {
+    setToken(persistedToken);
+    const { data } = await instance.get<RefreshResponse>('/users/current');
+    return data;
+  } catch (error) {
+    const err = error as AxiosError<{ message?: string }>;
+    return rejectWithValue(err.response?.data?.message || 'Refresh failed');
+  }
+});

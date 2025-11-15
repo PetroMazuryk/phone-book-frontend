@@ -54,6 +54,7 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
           <input
             type="text"
             value={name}
+            placeholder="Petro"
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -63,6 +64,7 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
           <input
             type="text"
             value={phone}
+            placeholder="+38 (0XX) XXX-XX-XX"
             onChange={(e) => setPhone(e.target.value)}
           />
         </div>

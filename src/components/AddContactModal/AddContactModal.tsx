@@ -21,9 +21,32 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
   const [phone, setPhone] = useState('');
   const [favorite, setFavorite] = useState(false);
   const [priority, setPriority] = useState(false);
+  const [nameError, setNameError] = useState<string | null>(null);
+  const [phoneError, setPhoneError] = useState<string | null>(null);
+
+  const mobileRegex = /^(\+?38)?0\d{9}$/;
+  const landlineRegex = /^0\d{6,9}$/;
+
+  const normalizePhone = (value: string) => value.replace(/[\s\-()]/g, '');
+
+  const validatePhone = (value: string) => {
+    const cleaned = normalizePhone(value);
+    return mobileRegex.test(cleaned) || landlineRegex.test(cleaned);
+  };
 
   const handleAddSubmit = () => {
-    if (!name.trim() || !phone.trim()) return;
+    setNameError(null);
+    setPhoneError(null);
+
+    if (!name.trim()) {
+      setNameError('Please enter the name');
+      return;
+    }
+
+    if (!validatePhone(phone)) {
+      setPhoneError('Invalid phone number format');
+      return;
+    }
 
     dispatch(
       addContact({
@@ -33,6 +56,7 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
         priority,
       })
     );
+
     handleClose();
   };
 
@@ -57,6 +81,11 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
             placeholder="Petro"
             onChange={(e) => setName(e.target.value)}
           />
+          {nameError && (
+            <p style={{ color: 'red', marginTop: '4px', fontSize: '14px' }}>
+              {nameError}
+            </p>
+          )}
         </div>
 
         <div className={styles.formGroup}>
@@ -68,6 +97,11 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
             placeholder="+38 0XX XXX XXXX"
             onChange={(e) => setPhone(e.target.value)}
           />
+          {phoneError && (
+            <p style={{ color: 'red', marginTop: '4px', fontSize: '14px' }}>
+              {phoneError}
+            </p>
+          )}
         </div>
 
         <div

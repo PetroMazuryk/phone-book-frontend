@@ -29,11 +29,16 @@ const ContactsList = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  const normalizePhone = (phone: string) => phone.replace(/[\s\-()]/g, '');
+
   const visibleContacts = contacts.filter((contact) => {
     const matchesName = contact.name
       .toLowerCase()
       .includes(nameFilter.toLowerCase());
-    const matchesPhone = contact.phone.includes(phoneFilter);
+
+    const matchesPhone = normalizePhone(contact.phone).includes(
+      normalizePhone(phoneFilter)
+    );
 
     const matchesStatus =
       status === statusFilters.total ||

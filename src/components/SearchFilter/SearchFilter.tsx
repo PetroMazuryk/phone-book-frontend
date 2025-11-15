@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import CustomButton from '../CustomButton/CustomButton';
 import { resetFilters } from '../../redux/filters/filtersSlice';
@@ -20,6 +20,13 @@ export const SearchFilter: React.FC = () => {
   const name = useAppSelector(selectNameFilter);
   const phone = useAppSelector(selectPhoneFilter);
   const status = useAppSelector(selectStatusFilter);
+
+  const [unlockPhone, setUnlockPhone] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setUnlockPhone(true), 100);
+    return () => clearTimeout(t);
+  }, []);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setNameFilter(e.target.value));
@@ -48,6 +55,7 @@ export const SearchFilter: React.FC = () => {
           value={name}
           onChange={handleNameChange}
           className={styles.input}
+          autoComplete="off"
         />
         {name && (
           <button type="button" className={styles.clearBtn} onClick={clearName}>
@@ -63,6 +71,8 @@ export const SearchFilter: React.FC = () => {
           value={phone}
           onChange={handlePhoneChange}
           className={styles.input}
+          autoComplete="off"
+          readOnly={!unlockPhone}
         />
         {phone && (
           <button
@@ -74,6 +84,7 @@ export const SearchFilter: React.FC = () => {
           </button>
         )}
       </div>
+
       {filtersChanged && (
         <CustomButton
           variant="secondary"

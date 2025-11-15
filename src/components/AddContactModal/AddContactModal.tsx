@@ -64,7 +64,8 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
           <input
             type="text"
             value={phone}
-            placeholder="+38 (0XX) XXX-XX-XX"
+            autoComplete="new-search-phone"
+            placeholder="+38 0XX XXX XXXX"
             onChange={(e) => setPhone(e.target.value)}
           />
         </div>

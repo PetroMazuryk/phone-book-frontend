@@ -11,6 +11,7 @@ import ContactIdPage from './pages/ContactIdPage/ContactIdPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import LoginForm from './components/LoginForm/LoginForm';
+import { HomeMessage } from './components/HomeMessage/HomeMessage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -27,12 +28,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route
-          index
-          element={
-            <div style={{ textAlign: 'center', marginTop: 80 }}>Home Page</div>
-          }
-        />
+        <Route index element={<HomeMessage />} />
         <Route
           path="/register"
           element={

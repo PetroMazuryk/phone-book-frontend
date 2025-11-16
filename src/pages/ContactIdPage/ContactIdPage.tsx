@@ -4,6 +4,8 @@ import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { selectLoading, selectError } from '../../redux/contacts/selectors';
 import { fetchContactById } from '../../redux/contacts/operations';
 import CallsTable from '../../components/CallsTable/CallsTable';
+import { Call } from '../../types';
+type CallResponse = Call | { result: Call; message?: string };
 
 import icon from '../../assets/sprite.svg';
 import styles from './ContactIdPage.module.css';
@@ -48,6 +50,21 @@ const ContactIdPage: React.FC = () => {
     );
   }
 
+  const normalizeCalls = (
+    callsArray: (Call | { result: Call; message?: string })[]
+  ): Call[] => {
+    if (!Array.isArray(callsArray)) return [];
+
+    return callsArray
+      .map((item) => {
+        if ('result' in item && item.result) return item.result;
+        if ('id' in item) return item;
+        return null;
+      })
+      .filter(Boolean) as Call[];
+  };
+  const calls = normalizeCalls(contact.calls || []);
+
   return (
     <>
       <div className={styles.cardContainer}>
@@ -84,10 +101,7 @@ const ContactIdPage: React.FC = () => {
         </div>
       </div>
 
-      <CallsTable
-        calls={(contact.calls || []).filter(Boolean)}
-        contactId={contact.id}
-      />
+      <CallsTable calls={calls} contactId={contact.id} />
     </>
   );
 };

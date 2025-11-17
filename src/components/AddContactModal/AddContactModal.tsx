@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { useAppDispatch } from '../../hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { addContact } from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
 import CustomButton from '../CustomButton/CustomButton';
-import icon from '../../assets/sprite.svg';
+import { selectContacts } from '../../redux/contacts/selectors';
 
+import icon from '../../assets/sprite.svg';
 import styles from '../EditContactModal/EditContactModal.module.css';
 import cardStyles from '../ContactCard/ContactCard.module.css';
 
@@ -16,6 +17,7 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
   handleClose,
 }) => {
   const dispatch = useAppDispatch();
+  const contacts = useAppSelector(selectContacts);
 
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');

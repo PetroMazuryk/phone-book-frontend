@@ -54,7 +54,7 @@ export const Header = () => {
         </CustomNavLink>
         <CustomNavLink to="/contacts">Contacts</CustomNavLink>
       </nav>
-      {/* <AuthNav /> */}
+
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </header>
   );

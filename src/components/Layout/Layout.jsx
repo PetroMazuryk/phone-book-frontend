@@ -7,9 +7,6 @@ import { ToasterBar } from '../ToasterBar/ToasterBar';
 import { ModalManager } from '../../components/ModalManager/ModalManager';
 
 import styles from './Layout.module.css';
-import toast from 'react-hot-toast';
-
-toast.success('Контакт додано!', { duration: 20000 });
 
 const Layout = () => {
   return (

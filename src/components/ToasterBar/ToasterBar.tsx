@@ -7,7 +7,7 @@ export const ToasterBar = () => {
       position="top-center"
       gutter={12}
       toastOptions={{
-        duration: 4000,
+        duration: 6000,
         style: {
           fontSize: '18px',
           padding: '14px 20px',

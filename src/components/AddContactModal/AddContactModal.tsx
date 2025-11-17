@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { addContact } from '../../redux/contacts/operations';
 import { Modal } from '../Modal/Modal';
+import toast from 'react-hot-toast';
 import CustomButton from '../CustomButton/CustomButton';
 import { selectContacts } from '../../redux/contacts/selectors';
 
@@ -48,6 +49,23 @@ export const AddContactModal: React.FC<AddContactModalProps> = ({
     if (!validatePhone(phone)) {
       setPhoneError('Invalid phone number format');
       return;
+    }
+
+    const contactAlreadyExists = contacts.find(
+      (contact) =>
+        contact.name.toLowerCase() === name.toLowerCase() ||
+        normalizePhone(contact.phone) === normalizePhone(phone)
+    );
+
+    if (contactAlreadyExists) {
+      toast.error(
+        `A contact with the name "${name}" or number "${phone}" already exists`
+      );
+      return;
+    } else {
+      toast.success(
+        `Congratulations, you have added a contact with a name "${name}" `
+      );
     }
 
     dispatch(

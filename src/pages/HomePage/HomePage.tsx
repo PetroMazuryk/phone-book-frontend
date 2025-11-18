@@ -1,11 +1,7 @@
 import { HomeMessage } from '../../components/HomeMessage/HomeMessage';
 
 const HomePage = () => {
-  return (
-    <>
-      <HomeMessage />
-    </>
-  );
+  return <HomeMessage />;
 };
 
 export default HomePage;

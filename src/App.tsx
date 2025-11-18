@@ -10,8 +10,8 @@ import ContactsPage from './pages/ContactsPage/ContactsPage';
 import ContactIdPage from './pages/ContactIdPage/ContactIdPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
+import HomePage from './pages/HomePage/HomePage';
 import LoginForm from './components/LoginForm/LoginForm';
-import { HomeMessage } from './components/HomeMessage/HomeMessage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -28,7 +28,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<HomeMessage />} />
+        <Route index element={<HomePage />} />
         <Route
           path="/register"
           element={

@@ -11,7 +11,7 @@ import ContactIdPage from './pages/ContactIdPage/ContactIdPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import HomePage from './pages/HomePage/HomePage';
-import LoginForm from './components/LoginForm/LoginForm';
+import LoginPage from './pages/LoginPage/LoginPage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -41,7 +41,7 @@ function App() {
         <Route
           path="/login"
           element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginForm />} />
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
           }
         />
         <Route

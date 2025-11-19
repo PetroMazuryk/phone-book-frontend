@@ -1,0 +1,58 @@
+.skeletonWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 46px;
+    padding: 20px 0;
+}
+
+.skeletonHeader,
+.skeletonLine,
+.skeletonLineShort {
+    position: relative;
+    overflow: hidden;
+    background: #e0e0e0;
+    border-radius: 6px;
+}
+
+
+.skeletonHeader::after,
+.skeletonLine::after,
+.skeletonLineShort::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--color-bg),
+            transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.skeletonHeader {
+    width: 60%;
+    height: 28px;
+}
+
+.skeletonLine {
+    width: 100%;
+    height: 18px;
+}
+
+.skeletonLineShort {
+    width: 40%;
+    height: 18px;
+}

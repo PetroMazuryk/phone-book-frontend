@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import { Loader } from '../Loader/Loader';
 import { Container } from '../Container/Container';
 import { ToasterBar } from '../ToasterBar/ToasterBar';
-import { ModalManager } from '../../components/ModalManager/ModalManager';
+import { ModalManager } from '../ModalManager/ModalManager';
 
 import styles from './Layout.module.css';
 

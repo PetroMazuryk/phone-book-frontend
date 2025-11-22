@@ -51,7 +51,7 @@ const ContactsList = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   if (visibleContacts.length === 0) {
-    return <p className={styles.empty}>The list is empty.</p>;
+    return <p className={styles.empty}>The list is empty</p>;
   }
 
   return (
